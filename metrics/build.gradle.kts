@@ -42,7 +42,7 @@ android {
 }
 
 dependencies {
-    implementation(project(":core"))
+    implementation("com.github.toukaremax:core:1.0.11")
     
     // Adjust SDK
     api("com.adjust.sdk:adjust-android:5.4.3")

@@ -9,6 +9,15 @@ ext {
                              rewarded    : "ca-app-pub-7869168547621070/6787396087"         // 激励广告测试ID
              ]]
 
+    // Google Ad Manager 配置（按业务替换为正式 ID）
+    gam = [adUnitIds: [banner      : "",
+                       interstitial: "",
+                       splash      : "",
+                       native      : "",
+                       full_native : "",
+                       rewarded    : ""
+    ]]
+
     // Pangle配置
     pangle = [applicationId: "8810707", // Pangle测试应用ID
               adUnitIds    : [splash      : "890141279",        // 开屏广告测试ID（竖屏）

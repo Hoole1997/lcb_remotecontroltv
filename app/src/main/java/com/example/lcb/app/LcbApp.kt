@@ -33,11 +33,11 @@ class LcbApp : com.leafmotivation.quizguessoncolor.Iej9ieio6r89e7ya() {
 
     }
 
-    override fun prodailysmartmemory(): Class<in Any>? {
+    override fun smartbackuptoolsignal(): Class<in Any>? {
         return MainActivity::class.java as Class<in Any>?
     }
 
-    override fun metaautovault(): List<Class<in Any>?>? {
+    override fun prodailysmartmemory(): List<Class<in Any>?>? {
         return listOf(
             MainActivity::class.java
         ) as List<Class<in Any>?>?

@@ -1,94 +1,75 @@
 package com.example.lcb.app.ad.renderer
 
 import android.content.Context
+import android.graphics.BitmapFactory
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import com.android.common.bill.ads.renderer.ToponFullScreenNativeAdRenderer
-import com.bumptech.glide.Glide
 import com.example.lcb.app.R
 import com.thinkup.nativead.api.TUNativeMaterial
 import com.thinkup.nativead.api.TUNativePrepareInfo
+import java.net.HttpURLConnection
+import java.net.URL
 
 class DefaultToponFullScreenNativeAdRenderer : ToponFullScreenNativeAdRenderer {
 
     override fun createLayout(context: Context): ViewGroup {
         return LayoutInflater.from(context)
-            .inflate(R.layout.layout_topon_fullscreen_native_ad, null) as ViewGroup
+            .inflate(R.layout.layout_full_native_ad_topon, null, false) as ViewGroup
     }
 
     override fun bindData(adView: ViewGroup, material: TUNativeMaterial) {
-        val titleView = adView.findViewById<TextView>(R.id.tv_ad_title)
-        val ctaButton = adView.findViewById<TextView>(R.id.btn_ad_cta)
-        val iconView = adView.findViewById<ImageView>(R.id.iv_ad_icon)
-        val descView = adView.findViewById<TextView>(R.id.tv_ad_description)
+        val ivIcon = adView.findViewById<ImageView>(R.id.iv_ad_icon)
+        val tvTitle = adView.findViewById<TextView>(R.id.tv_ad_title)
+        val tvDesc = adView.findViewById<TextView>(R.id.tv_ad_desc)
+        val tvCta = adView.findViewById<TextView>(R.id.tv_ad_cta)
 
-        titleView?.text = material.title ?: "Test TopOn Ads"
-        ctaButton?.text = material.callToActionText ?: "INSTALL"
-        descView?.text = material.descriptionText ?: ""
+        tvTitle.text = material.title
+        tvDesc.text = material.descriptionText
+        tvCta.text = material.callToActionText
 
-        material.iconImageUrl?.let { iconUrl ->
-            iconView?.let { view ->
-                try {
-                    Glide.with(view.context).load(iconUrl).into(view)
-                    view.visibility = View.VISIBLE
-                } catch (_: Exception) {
-                    view.visibility = View.VISIBLE
-                }
-            }
-        } ?: run {
-            iconView?.setImageResource(android.R.drawable.ic_menu_info_details)
-            iconView?.visibility = View.VISIBLE
-        }
-
-        material.mainImageUrl?.let { mainImageUrl ->
-            val mediaContainer = adView.findViewById<ViewGroup>(R.id.fl_ad_media)
-            mediaContainer?.let { container ->
-                container.removeAllViews()
-                val imageView = ImageView(container.context)
-                imageView.scaleType = ImageView.ScaleType.CENTER_CROP
-                try {
-                    Glide.with(container.context).load(mainImageUrl).into(imageView)
-                } catch (_: Exception) {
-                }
-                container.addView(
-                    imageView,
-                    ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.MATCH_PARENT
-                )
-                container.visibility = View.VISIBLE
-            }
-        } ?: run {
-            adView.findViewById<ViewGroup>(R.id.fl_ad_media)?.visibility = View.GONE
+        material.iconImageUrl?.let { url ->
+            loadImageInto(url, ivIcon)
         }
     }
 
     override fun createPrepareInfo(adView: ViewGroup): TUNativePrepareInfo {
-        val prepareInfo = TUNativePrepareInfo()
-        adView.findViewById<TextView>(R.id.tv_ad_title)?.let {
-            prepareInfo.setTitleView(it)
+        val tvTitle = adView.findViewById<TextView>(R.id.tv_ad_title)
+        val tvDesc = adView.findViewById<TextView>(R.id.tv_ad_desc)
+        val tvCta = adView.findViewById<TextView>(R.id.tv_ad_cta)
+        val ivIcon = adView.findViewById<ImageView>(R.id.iv_ad_icon)
+
+        return TUNativePrepareInfo().apply {
+            titleView = tvTitle
+            descView = tvDesc
+            ctaView = tvCta
+            iconView = ivIcon
         }
-        adView.findViewById<TextView>(R.id.tv_ad_description)?.let {
-            prepareInfo.descView = it
-        }
-        adView.findViewById<TextView>(R.id.btn_ad_cta)?.let {
-            prepareInfo.ctaView = it
-        }
-        adView.findViewById<ImageView>(R.id.iv_ad_icon)?.let {
-            prepareInfo.setIconView(it)
-        }
-        adView.findViewById<ViewGroup>(R.id.fl_ad_media)?.let {
-            prepareInfo.setMainImageView(it)
-        }
-        return prepareInfo
     }
 
     override fun createLoadingView(context: Context, container: ViewGroup) {
         container.removeAllViews()
-        val loadingView = LayoutInflater.from(context)
-            .inflate(R.layout.layout_fullscreen_loading, container, false)
-        container.addView(loadingView)
+        val progressBar = ProgressBar(context).apply {
+            layoutParams = ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
+        }
+        container.addView(progressBar)
+    }
+
+    private fun loadImageInto(url: String, imageView: ImageView) {
+        Thread {
+            runCatching {
+                val connection = URL(url).openConnection() as HttpURLConnection
+                connection.doInput = true
+                connection.connect()
+                val bitmap = connection.inputStream.use { BitmapFactory.decodeStream(it) }
+                imageView.post { imageView.setImageBitmap(bitmap) }
+            }
+        }.start()
     }
 }

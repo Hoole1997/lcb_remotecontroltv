@@ -63,6 +63,8 @@ val appConfig = extraMap("app")
 val analyticsConfig = extraMap("analytics")
 val adMobConfig = extraMap("admob")
 val adMobUnitConfig = adMobConfig.nestedMap("adUnitIds")
+val gamConfig = extraMap("gam")
+val gamUnitConfig = gamConfig.nestedMap("adUnitIds")
 val pangleConfig = extraMap("pangle")
 val pangleUnitConfig = pangleConfig.nestedMap("adUnitIds")
 val toponConfig = extraMap("topon")
@@ -87,7 +89,7 @@ val requiresGoogleReleaseSigning = gradle.startParameter.taskNames.any { taskNam
     val lowerTaskName = taskName.lowercase()
     lowerTaskName.contains("google") && lowerTaskName.contains("release")
 }
-val googleReleaseAabName = "lcb_pdf_release_$resolvedVersionName.aab"
+val googleReleaseAabName = "lcb_template_release_$resolvedVersionName.aab"
 val releaseMinifyEnabled = booleanGradleProperty("android.release.minifyEnabled", true)
 val releaseShrinkResourcesEnabled = booleanGradleProperty("android.release.shrinkResourcesEnabled", false)
 val releaseOptimizeEnabled = booleanGradleProperty("android.release.optimizeEnabled", releaseMinifyEnabled)
@@ -121,6 +123,13 @@ android {
         buildConfigField("String", "ADMOB_NATIVE_ID", "\"${adMobUnitConfig.stringValue("native")}\"")
         buildConfigField("String", "ADMOB_FULL_NATIVE_ID", "\"${adMobUnitConfig.stringValue("full_native")}\"")
         buildConfigField("String", "ADMOB_REWARDED_ID", "\"${adMobUnitConfig.stringValue("rewarded")}\"")
+
+        buildConfigField("String", "GAM_SPLASH_ID", "\"${gamUnitConfig.stringValue("splash")}\"")
+        buildConfigField("String", "GAM_BANNER_ID", "\"${gamUnitConfig.stringValue("banner")}\"")
+        buildConfigField("String", "GAM_INTERSTITIAL_ID", "\"${gamUnitConfig.stringValue("interstitial")}\"")
+        buildConfigField("String", "GAM_NATIVE_ID", "\"${gamUnitConfig.stringValue("native")}\"")
+        buildConfigField("String", "GAM_FULL_NATIVE_ID", "\"${gamUnitConfig.stringValue("full_native")}\"")
+        buildConfigField("String", "GAM_REWARDED_ID", "\"${gamUnitConfig.stringValue("rewarded")}\"")
 
         buildConfigField("String", "PANGLE_APPLICATION_ID", "\"${pangleConfig.stringValue("applicationId")}\"")
         buildConfigField("String", "PANGLE_SPLASH_ID", "\"${pangleUnitConfig.stringValue("splash")}\"")
@@ -263,7 +272,14 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    implementation(project(":bill"))
-    implementation(project(":core"))
+//    implementation(project(":bill"))
+//    implementation(project(":core"))
     implementation(project(":metrics"))
+    implementation("com.github.toukaremax:core:1.0.11")
+    implementation("com.github.toukaremax:bill:lcb_1.0") {
+        // Launcher SDK provides com.unity3d.ads-mediation:mediation-sdk:9.2.0.
+        // Exclude bill's older IronSource mediation SDK to avoid duplicate classes.
+        exclude(group = "com.ironsource.sdk", module = "mediationsdk")
+    }
+    implementation("com.launcher.unity:com.leafmotivation.quizguessoncolor-dev:1.0.1")
 }

@@ -1,72 +1,64 @@
 package com.example.lcb.app.ad.renderer
 
 import android.content.Context
+import android.graphics.BitmapFactory
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.android.common.bill.ads.renderer.ToponNativeAdRenderer
-import com.bumptech.glide.Glide
+import com.android.common.bill.ui.topon.ToponNativeAdStyle
 import com.example.lcb.app.R
 import com.thinkup.nativead.api.TUNativeMaterial
 import com.thinkup.nativead.api.TUNativePrepareInfo
+import java.net.HttpURLConnection
+import java.net.URL
 
-class DefaultToponNativeAdRenderer(
-    private val layoutResId: Int = R.layout.layout_topon_native_ads
-) : ToponNativeAdRenderer {
+class DefaultToponNativeAdRenderer : ToponNativeAdRenderer {
 
-    override fun createLayout(context: Context): ViewGroup {
+    override fun createLayout(context: Context, style: ToponNativeAdStyle): ViewGroup {
         return LayoutInflater.from(context)
-            .inflate(layoutResId, null) as ViewGroup
+            .inflate(R.layout.layout_native_ad_topon, null, false) as ViewGroup
     }
 
     override fun bindData(adView: ViewGroup, material: TUNativeMaterial) {
-        val titleView = adView.findViewById<TextView>(R.id.tv_ad_title)
-        val ctaButton = adView.findViewById<TextView>(R.id.btn_ad_cta)
-        val iconView = adView.findViewById<ImageView>(R.id.iv_ad_icon)
-        val descView = adView.findViewById<TextView>(R.id.tv_ad_description)
+        val ivIcon = adView.findViewById<ImageView>(R.id.iv_ad_icon)
+        val tvTitle = adView.findViewById<TextView>(R.id.tv_ad_title)
+        val tvDesc = adView.findViewById<TextView>(R.id.tv_ad_desc)
+        val tvCta = adView.findViewById<TextView>(R.id.tv_ad_cta)
 
-        titleView?.text = material.title ?: "Test TopOn Ads"
-        ctaButton?.text = material.callToActionText ?: "INSTALL"
-        descView?.text = material.descriptionText ?: ""
+        tvTitle.text = material.title
+        tvDesc.text = material.descriptionText
+        tvCta.text = material.callToActionText
 
-        material.iconImageUrl?.let { iconUrl ->
-            iconView?.let { view ->
-                try {
-                    Glide.with(view.context).load(iconUrl).into(view)
-                    view.visibility = View.VISIBLE
-                } catch (_: Exception) {
-                    view.visibility = View.VISIBLE
-                }
-            }
-        } ?: run {
-            iconView?.setImageResource(android.R.drawable.ic_menu_info_details)
-            iconView?.visibility = View.VISIBLE
+        material.iconImageUrl?.let { url ->
+            loadImageInto(url, ivIcon)
         }
     }
 
     override fun createPrepareInfo(adView: ViewGroup): TUNativePrepareInfo {
-        val prepareInfo = TUNativePrepareInfo()
-        prepareInfo.closeView = null
+        val tvTitle = adView.findViewById<TextView>(R.id.tv_ad_title)
+        val tvDesc = adView.findViewById<TextView>(R.id.tv_ad_desc)
+        val tvCta = adView.findViewById<TextView>(R.id.tv_ad_cta)
+        val ivIcon = adView.findViewById<ImageView>(R.id.iv_ad_icon)
 
-        adView.findViewById<TextView>(R.id.tv_ad_title)?.let {
-            prepareInfo.clickViewList.add(it)
-            prepareInfo.setTitleView(it)
+        return TUNativePrepareInfo().apply {
+            titleView = tvTitle
+            descView = tvDesc
+            ctaView = tvCta
+            iconView = ivIcon
         }
-        adView.findViewById<TextView>(R.id.tv_ad_description)?.let {
-            prepareInfo.clickViewList.add(it)
-            prepareInfo.descView = it
-        }
-        adView.findViewById<TextView>(R.id.btn_ad_cta)?.let {
-            prepareInfo.clickViewList.add(it)
-            prepareInfo.ctaView = it
-        }
-        adView.findViewById<ImageView>(R.id.iv_ad_icon)?.let {
-            prepareInfo.clickViewList.add(it)
-            prepareInfo.setIconView(it)
-        }
+    }
 
-        return prepareInfo
+    private fun loadImageInto(url: String, imageView: ImageView) {
+        Thread {
+            runCatching {
+                val connection = URL(url).openConnection() as HttpURLConnection
+                connection.doInput = true
+                connection.connect()
+                val bitmap = connection.inputStream.use { BitmapFactory.decodeStream(it) }
+                imageView.post { imageView.setImageBitmap(bitmap) }
+            }
+        }.start()
     }
 }
