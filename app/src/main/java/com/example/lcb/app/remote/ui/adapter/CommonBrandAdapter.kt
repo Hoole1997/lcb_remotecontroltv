@@ -34,7 +34,7 @@ class CommonBrandAdapter(
         fun bind(item: TvBrand, onClick: (TvBrand) -> Unit) {
             val visual = BrandVisuals.forName(item.name)
             binding.letterText.text = item.name.brandInitial()
-            binding.letterText.setBackgroundResource(visual.circleBackground)
+            binding.letterText.setTextColor(visual.color)
             binding.nameText.text = item.name.brandDisplayName()
             binding.root.setOnClickListener { onClick(item) }
         }

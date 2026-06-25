@@ -1,6 +1,5 @@
 package com.example.lcb.app.remote.ui.adapter
 
-import android.content.res.ColorStateList
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,7 +34,6 @@ class BrandAdapter(
     class ViewHolder(private val binding: ItemBrandRowBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: TvBrand, isLast: Boolean, onClick: (TvBrand) -> Unit) {
             val visual = BrandVisuals.forName(item.name)
-            binding.tvIcon.imageTintList = ColorStateList.valueOf(visual.color)
             binding.letterText.text = item.name.brandInitial()
             binding.letterText.setTextColor(visual.color)
             binding.nameText.text = item.name.brandDisplayName()

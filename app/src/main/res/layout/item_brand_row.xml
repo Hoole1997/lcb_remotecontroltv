@@ -3,48 +3,42 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="82dp"
-    android:background="@color/remote_surface"
-    android:paddingStart="18dp"
-    android:paddingEnd="18dp">
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground"
+    android:minHeight="60dp"
+    android:paddingStart="16dp"
+    android:paddingTop="9dp"
+    android:paddingEnd="16dp"
+    android:paddingBottom="9dp">
 
-    <FrameLayout
-        android:id="@+id/iconFrame"
-        android:layout_width="54dp"
-        android:layout_height="42dp"
+    <TextView
+        android:id="@+id/letterText"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:background="@drawable/bg_brand_tile"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/tvIcon"
-            android:layout_width="54dp"
-            android:layout_height="42dp"
-            android:src="@drawable/ic_remote_tv" />
-
-        <TextView
-            android:id="@+id/letterText"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:gravity="center"
-            android:textColor="@color/remote_primary"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            tools:text="S" />
-    </FrameLayout>
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="S"
+        tools:textColor="@color/remote_primary" />
 
     <TextView
         android:id="@+id/nameText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="8dp"
         android:ellipsize="end"
         android:maxLines="1"
         android:textColor="@color/remote_on_surface"
-        android:textSize="21sp"
+        android:textSize="15sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/countText"
         app:layout_constraintEnd_toStartOf="@id/chevronIcon"
-        app:layout_constraintStart_toEndOf="@id/iconFrame"
+        app:layout_constraintStart_toEndOf="@id/letterText"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed"
         tools:text="Samsung" />
@@ -53,9 +47,9 @@
         android:id="@+id/countText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="3dp"
         android:textColor="@color/remote_text_secondary"
-        android:textSize="15sp"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/nameText"
         app:layout_constraintStart_toStartOf="@id/nameText"
@@ -64,17 +58,20 @@
 
     <ImageView
         android:id="@+id/chevronIcon"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:contentDescription="@null"
         android:src="@drawable/ic_remote_chevron"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/remote_text_secondary" />
 
     <View
         android:id="@+id/divider"
         android:layout_width="0dp"
         android:layout_height="1dp"
+        android:layout_marginStart="50dp"
         android:background="@color/remote_outline"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

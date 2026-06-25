@@ -45,7 +45,7 @@ class BrandListActivity : AppCompatActivity() {
         binding.brandRecycler.layoutManager = LinearLayoutManager(this)
         binding.brandRecycler.adapter = brandAdapter
 
-        binding.backButton.setOnClickListener { finish() }
+        binding.toolbar.setNavigationOnClickListener { finish() }
         binding.searchEditText.addTextChangedListener(searchWatcher())
 
         commonBrandAdapter.submitList(commonBrands())
