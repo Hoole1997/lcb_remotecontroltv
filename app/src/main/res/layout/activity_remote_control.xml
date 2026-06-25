@@ -60,62 +60,64 @@
 
     <TextView
         android:id="@+id/irStatusText"
-        android:layout_width="0dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginTop="4dp"
         android:background="@drawable/bg_remote_chip_selected"
         android:gravity="center"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
         android:text="IR Ready"
         android:textColor="@color/remote_primary"
-        android:textSize="15sp"
+        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/topBar" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/powerButton"
-        android:layout_width="118dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="28dp"
-        android:background="@drawable/bg_remote_button_pill"
+        android:layout_width="96dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="18dp"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
         android:text="Power"
         android:textColor="@android:color/white"
         app:backgroundTint="@color/remote_orange"
+        app:cornerRadius="14dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/irStatusText" />
 
     <GridLayout
         android:id="@+id/dpadGrid"
-        android:layout_width="240dp"
-        android:layout_height="240dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
         android:columnCount="3"
         android:rowCount="3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/powerButton">
 
-        <Space android:layout_width="80dp" android:layout_height="80dp" />
-        <com.google.android.material.button.MaterialButton android:id="@+id/upButton" style="@style/Widget.LCB.RemoteButton" android:text="▲" />
-        <Space android:layout_width="80dp" android:layout_height="80dp" />
-        <com.google.android.material.button.MaterialButton android:id="@+id/leftButton" style="@style/Widget.LCB.RemoteButton" android:text="◀" />
-        <com.google.android.material.button.MaterialButton android:id="@+id/okButton" style="@style/Widget.LCB.RemoteButton.Primary" android:text="OK" />
-        <com.google.android.material.button.MaterialButton android:id="@+id/rightButton" style="@style/Widget.LCB.RemoteButton" android:text="▶" />
-        <Space android:layout_width="80dp" android:layout_height="80dp" />
-        <com.google.android.material.button.MaterialButton android:id="@+id/downButton" style="@style/Widget.LCB.RemoteButton" android:text="▼" />
-        <Space android:layout_width="80dp" android:layout_height="80dp" />
+        <Space android:layout_width="62dp" android:layout_height="62dp" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/upButton" style="@style/Widget.LCB.RemoteButton" android:layout_margin="2dp" android:text="▲" />
+        <Space android:layout_width="62dp" android:layout_height="62dp" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/leftButton" style="@style/Widget.LCB.RemoteButton" android:layout_margin="2dp" android:text="◀" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/okButton" style="@style/Widget.LCB.RemoteButton.Primary" android:layout_margin="2dp" android:text="OK" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/rightButton" style="@style/Widget.LCB.RemoteButton" android:layout_margin="2dp" android:text="▶" />
+        <Space android:layout_width="62dp" android:layout_height="62dp" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/downButton" style="@style/Widget.LCB.RemoteButton" android:layout_margin="2dp" android:text="▼" />
+        <Space android:layout_width="62dp" android:layout_height="62dp" />
     </GridLayout>
 
     <LinearLayout
         android:id="@+id/volumeChannelRow"
         android:layout_width="0dp"
-        android:layout_height="150dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="40dp"
         android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -126,26 +128,26 @@
             android:id="@+id/volumeControl"
             layout="@layout/view_remote_vertical_control"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginEnd="8dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
             android:layout_weight="1" />
 
         <include
             android:id="@+id/channelControl"
             layout="@layout/view_remote_vertical_control"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="8dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:layout_weight="1" />
     </LinearLayout>
 
     <GridLayout
         android:id="@+id/utilityGrid"
         android:layout_width="0dp"
-        android:layout_height="128dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="22dp"
-        android:layout_marginEnd="24dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="19dp"
         android:columnCount="3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -47,7 +47,6 @@ class HomeFragment : Fragment() {
             }
         }
         binding.emptyAddButton.setOnClickListener { openBrandList() }
-        binding.homeFloatingAdd.setOnClickListener { openBrandList() }
     }
 
     override fun onResume() {
