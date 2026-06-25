@@ -134,3 +134,84 @@ Ran `./gradlew :app:assembleLocalDebug` again after the independent Activity/XML
 ### Home Component Verification
 - ✅ Ran `./gradlew :app:assembleLocalDebug` after the MaterialToolbar/BottomNavigationView home-page revision. The build completed successfully.
 - ✅ Ran `./gradlew :app:assembleLocalDebug` after correcting toolbar and bottom navigation dimensions to Material-standard sizes. The build completed successfully.
+
+## 8. Brand Logo Assets
+
+Status: ✅ Completed
+
+### Subflow
+- ✅ Add a reproducible logo download script for TV brands with verified domain mappings.
+- ✅ Download verified logo assets into `res/drawable-nodpi` so the app works offline after packaging.
+- ✅ Generate `BrandLogoResolver` to map IRDB brand folder names to local drawable resources.
+- ✅ Bind logos in the current refactored UI: saved TV cards, all-brand rows, common-brand cards, and model-list brand header.
+- ✅ Keep fallback rendering for uncovered brands: initials on brand tiles and generic TV icon on saved-device cards.
+- ✅ Retry uncovered brands with corrected domains/source order and keep poor or mismatched candidates excluded.
+
+### Implementation Summary
+Added `tools/download_tv_brand_logos.py`, `BrandLogoResolver.kt`, and `BrandLogoViews.kt`. The current package includes 82 verified local logo assets with source metadata in `brand_logo_sources.json`. After the UI refactor, logo binding was re-applied to the active adapters/layouts instead of the older replaced views.
+
+### Brandfetch Evaluation Summary
+✅ Added `tools/generate_brandfetch_logo_preview.py` to evaluate Brandfetch Logo API quality without downloading or caching Brandfetch images. The script reads the current TV brand domain mapping and generates `brandfetch-logo-preview.html`, which directly embeds Brandfetch CDN URLs with `BRANDFETCH_CLIENT_ID`.
+
+### Brandfetch CDN Download Summary
+✅ Updated `tools/download_tv_brand_logos.py` to use Brandfetch Logo API CDN URLs directly with `BRANDFETCH_CLIENT_ID`, without calling the paid REST API. The script downloads CDN logo images into local `drawable-nodpi` resources for offline APK usage and keeps Uplead/Google favicon only as fallback sources. The current generated set contains 82 logos, with most sourced from Brandfetch Logo API CDN.
+
+### Missing Brand Retry Summary
+✅ Retried uncovered brands with corrected or more specific domains and per-brand source ordering. Added local logos for AWA, Akai, Apex, BBK, Bauhn, Brandt, ContinentalEdison, Devant, Ffalcon, Nevir, Onn, PDi, Technika, Vitec, and Zenith. The script now normalizes downloaded images by trimming transparent/near-white padding and writing PNG output, improving visual balance in RecyclerView rows and saved-device cards. Brands with wrong, generic, or unreadable candidates, such as DYON, United, Viano, and Wbox, remain on fallback initials instead of packaging misleading assets.
+
+### Verification
+- ✅ Ran `./gradlew :app:assembleLocalDebug` after re-binding logos to the current UI. The build completed successfully.
+- ✅ Ran `./gradlew :app:assembleLocalDebug` after switching logo generation to Brandfetch Logo API CDN downloads. The build completed successfully.
+
+## 9. IRDB Command Alias Compatibility
+
+Status: ✅ Completed
+
+### Subflow
+- ✅ Inspect Xiaomi IRDB raw command naming and confirm `Open` is a raw IR command, not an unsupported protocol.
+- ✅ Centralize additional command aliases in `RemoteAction.fromIrName()` instead of adding page-level special cases.
+- ✅ Map `Open`, `Standby`, `On/Off`, and `Power_on` style names to the app `POWER` action.
+- ✅ Handle slash-separated names such as `Return/back` so they map to `BACK`.
+- ✅ Add unit tests for Xiaomi `Open`, Xiaomi `More`, slash-separated back, and action-menu aliases.
+
+### Implementation Summary
+Fixed command-action normalization in `IrModels.kt`. Xiaomi `Xiaomi_TV.ir` uses `name: Open` for a raw power signal and `name: More` for the menu signal, and the transmitter already supports raw signals; the missing piece was action alias mapping. The remote page now enables the power and menu buttons for that profile because `Open` maps to `RemoteAction.POWER` and `More` maps to `RemoteAction.MENU`. Added `RemoteActionTest` and `FlipperIrParserTest` to lock this behavior.
+
+### Verification
+- ✅ Ran `./gradlew :app:testLocalDebugUnitTest`. Unit tests passed.
+- ✅ Ran `./gradlew :app:assembleLocalDebug`. Build completed successfully.
+
+### Alias Coverage Expansion Summary
+✅ Scanned all 397 packaged TV `.ir` files and 10,976 `name:` entries. Expanded command matching for aliases that can safely map to the current remote UI actions: discrete power variants, compound volume/channel names, `Exit`/`Cancel` return variants, HDMI/USB/source variants, quick-menu variants, guide/help/info variants, and common OK/select variants. `TvRemoteProfile.supportedActions` now uses match priority so canonical names such as `Power` win over lower-priority aliases such as `Power_off` when both exist. After the expansion, mapped command entries increased from 4,781 to 5,505, and unique unmapped command names dropped from 1,373 to 1,098. Remaining unmapped names are mainly numeric keypad, media transport, color keys, subtitle/audio, sleep, and app shortcut keys that do not have dedicated controls in the current UI.
+
+## 10. Remote Button Haptic Feedback
+
+Status: ✅ Completed
+
+### Subflow
+- ✅ Add the Android vibration permission to the main manifest.
+- ✅ Encapsulate platform vibrator APIs behind a small reusable remote haptic helper.
+- ✅ Use `VibratorManager` on Android 12+ and `Vibrator` on older supported versions.
+- ✅ Trigger a short tick only when a supported remote action is clicked.
+
+### Implementation Summary
+Added `android.permission.VIBRATE` and `RemoteHapticFeedback`. `RemoteControlActivity` initializes the helper once and calls `performKeyPress()` before transmitting a supported IR command. Unsupported/disabled buttons do not trigger haptics.
+
+### Verification
+- ✅ Ran `./gradlew :app:assembleLocalDebug`. Build completed successfully.
+
+## 11. Infrared Capability Tip
+
+Status: ✅ Completed
+
+### Subflow
+- ✅ Reuse `AndroidIrTransmitter.hasEmitter()` as the device infrared capability check.
+- ✅ Add a compact warning tip below the remote toolbar.
+- ✅ Show the tip only when the phone has no consumer IR emitter.
+- ✅ Keep send-time `NoEmitter` handling as a safety fallback.
+
+### Implementation Summary
+Added a `noIrTip` row to `activity_remote_control.xml` below the toolbar divider and styled it with `bg_remote_ir_tip`. `RemoteControlActivity` now calls `isInfraredSupported()` after creating the transmitter and toggles the tip visibility. Supported devices keep the previous clean remote layout.
+
+### Verification
+- ✅ Ran `./gradlew :app:assembleLocalDebug`. Build completed successfully.

@@ -3,6 +3,7 @@ package com.example.lcb.app
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
@@ -16,12 +17,14 @@ import com.example.lcb.app.remote.infrared.IrSendResult
 import com.example.lcb.app.remote.model.RemoteAction
 import com.example.lcb.app.remote.model.SavedTv
 import com.example.lcb.app.remote.model.TvRemoteProfile
+import com.example.lcb.app.remote.ui.RemoteHapticFeedback
 import com.example.lcb.app.remote.ui.applySystemBarInsets
 
 class RemoteControlActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRemoteControlBinding
     private lateinit var profile: TvRemoteProfile
     private lateinit var transmitter: AndroidIrTransmitter
+    private lateinit var hapticFeedback: RemoteHapticFeedback
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +51,9 @@ class RemoteControlActivity : AppCompatActivity() {
 
         profile = loadedProfile
         transmitter = AndroidIrTransmitter(this)
+        hapticFeedback = RemoteHapticFeedback(this)
         bindHeader(savedTv)
+        bindInfraredCapabilityTip()
         bindButtons()
     }
 
@@ -65,6 +70,16 @@ class RemoteControlActivity : AppCompatActivity() {
             }
         }
     }
+
+    private fun bindInfraredCapabilityTip() {
+        binding.noIrTip.visibility = if (isInfraredSupported()) {
+            View.GONE
+        } else {
+            View.VISIBLE
+        }
+    }
+
+    private fun isInfraredSupported(): Boolean = transmitter.hasEmitter()
 
     private fun confirmDelete(savedTv: SavedTv) {
         AlertDialog.Builder(this)
@@ -114,6 +129,7 @@ class RemoteControlActivity : AppCompatActivity() {
 
     private fun send(action: RemoteAction) {
         val command = profile.supportedActions[action] ?: return
+        hapticFeedback.performKeyPress()
         transmitter.send(command).message()?.let { message ->
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
         }

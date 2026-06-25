@@ -6,8 +6,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.lcb.app.databinding.ItemCommonBrandBinding
 import com.example.lcb.app.remote.model.TvBrand
 import com.example.lcb.app.remote.ui.BrandVisuals
+import com.example.lcb.app.remote.ui.bindBrandLogo
 import com.example.lcb.app.remote.ui.brandDisplayName
-import com.example.lcb.app.remote.ui.brandInitial
 
 class CommonBrandAdapter(
     private val onClick: (TvBrand) -> Unit,
@@ -33,8 +33,7 @@ class CommonBrandAdapter(
     class ViewHolder(private val binding: ItemCommonBrandBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: TvBrand, onClick: (TvBrand) -> Unit) {
             val visual = BrandVisuals.forName(item.name)
-            binding.letterText.text = item.name.brandInitial()
-            binding.letterText.setTextColor(visual.color)
+            bindBrandLogo(binding.logoImage, binding.fallbackInitialText, item.name, visual.color)
             binding.nameText.text = item.name.brandDisplayName()
             binding.root.setOnClickListener { onClick(item) }
         }

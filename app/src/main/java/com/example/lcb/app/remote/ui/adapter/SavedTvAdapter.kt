@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.lcb.app.R
 import com.example.lcb.app.databinding.ItemSavedTvCardBinding
 import com.example.lcb.app.remote.model.SavedTv
+import com.example.lcb.app.remote.ui.BrandLogoResolver
 import com.example.lcb.app.remote.ui.brandDisplayName
 
 class SavedTvAdapter(
@@ -36,9 +37,16 @@ class SavedTvAdapter(
             val context = binding.root.context
             val secondary = ContextCompat.getColor(context, R.color.remote_text_secondary)
             val chipGray = ContextCompat.getColor(context, R.color.remote_chip_gray)
+            val logoResId = BrandLogoResolver.logoForName(item.brand)
 
             binding.deviceIconContainer.backgroundTintList = ColorStateList.valueOf(chipGray)
-            binding.deviceIcon.imageTintList = ColorStateList.valueOf(secondary)
+            if (logoResId != null) {
+                binding.deviceIcon.setImageResource(logoResId)
+                binding.deviceIcon.imageTintList = null
+            } else {
+                binding.deviceIcon.setImageResource(R.drawable.ic_remote_tv)
+                binding.deviceIcon.imageTintList = ColorStateList.valueOf(secondary)
+            }
             binding.deviceNameText.text = item.displayName
             binding.modelText.text = "${item.brand.brandDisplayName()} TV"
             binding.sceneChip.text = item.scene

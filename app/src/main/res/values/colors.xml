@@ -17,4 +17,7 @@
     <color name="remote_orange">#F04B2F</color>
     <color name="remote_blue">#2F5DA8</color>
     <color name="remote_yellow_soft">#FFE4A3</color>
+    <color name="remote_warning_background">#FFF7E6</color>
+    <color name="remote_warning_border">#FFD08A</color>
+    <color name="remote_warning_text">#8A5200</color>
 </resources>

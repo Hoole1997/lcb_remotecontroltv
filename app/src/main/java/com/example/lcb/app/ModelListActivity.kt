@@ -19,8 +19,8 @@ import com.example.lcb.app.remote.ui.AddRemoteSheet
 import com.example.lcb.app.remote.ui.BrandVisuals
 import com.example.lcb.app.remote.ui.adapter.ModelAdapter
 import com.example.lcb.app.remote.ui.applySystemBarInsets
+import com.example.lcb.app.remote.ui.bindBrandLogo
 import com.example.lcb.app.remote.ui.brandDisplayName
-import com.example.lcb.app.remote.ui.brandInitial
 
 class ModelListActivity : AppCompatActivity() {
     private lateinit var binding: ActivityModelListBinding
@@ -65,8 +65,7 @@ class ModelListActivity : AppCompatActivity() {
 
     private fun bindBrandHeader() {
         val visual = BrandVisuals.forName(brand.name)
-        binding.brandLetterText.text = brand.name.brandInitial()
-        binding.brandLetterText.setTextColor(visual.color)
+        bindBrandLogo(binding.brandLogoImage, binding.brandFallbackInitialText, brand.name, visual.color)
         binding.brandNameText.text = brand.name.brandDisplayName()
         binding.brandCountText.text = "${brand.modelCount} 个可用遥控码"
     }

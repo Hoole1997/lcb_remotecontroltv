@@ -1,0 +1,494 @@
+[
+  {
+    "brand": "AWA",
+    "domain": "awa.com.au",
+    "file": "brand_logo_awa.png",
+    "source": "brandfetch_logo_light_png"
+  },
+  {
+    "brand": "Akai",
+    "domain": "akai.com",
+    "file": "brand_logo_akai.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "Amazon",
+    "domain": "amazon.com",
+    "file": "brand_logo_amazon.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "AmazonBasics",
+    "domain": "amazon.com",
+    "file": "brand_logo_amazonbasics.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "Android",
+    "domain": "android.com",
+    "file": "brand_logo_android.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "Apex",
+    "domain": "apexdigital.com",
+    "file": "brand_logo_apex.png",
+    "source": "google_favicon"
+  },
+  {
+    "brand": "BBK",
+    "domain": "bbk.ru",
+    "file": "brand_logo_bbk.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "BGH",
+    "domain": "bgh.com.ar",
+    "file": "brand_logo_bgh.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "Bauhn",
+    "domain": "bauhn.com.au",
+    "file": "brand_logo_bauhn.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "Blaupunkt",
+    "domain": "blaupunkt.com",
+    "file": "brand_logo_blaupunkt.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "Blitzwolf",
+    "domain": "blitzwolf.com",
+    "file": "brand_logo_blitzwolf.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "Bose",
+    "domain": "bose.com",
+    "file": "brand_logo_bose.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "Boulanger",
+    "domain": "boulanger.com",
+    "file": "brand_logo_boulanger.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "Brandt",
+    "domain": "brandt.fr",
+    "file": "brand_logo_brandt.png",
+    "source": "google_favicon"
+  },
+  {
+    "brand": "Bush",
+    "domain": "bush-support.com",
+    "file": "brand_logo_bush.png",
+    "source": "brandfetch_logo_light_png"
+  },
+  {
+    "brand": "Cadillac",
+    "domain": "cadillac.com",
+    "file": "brand_logo_cadillac.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "ContinentalEdison",
+    "domain": "continentaledison.fr",
+    "file": "brand_logo_continentaledison.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "Daewoo",
+    "domain": "daewooelectronics.com",
+    "file": "brand_logo_daewoo.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "Denver",
+    "domain": "denver.eu",
+    "file": "brand_logo_denver.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "Devant",
+    "domain": "devanttv.com",
+    "file": "brand_logo_devant.png",
+    "source": "uplead"
+  },
+  {
+    "brand": "Dual",
+    "domain": "dual.de",
+    "file": "brand_logo_dual.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "Element",
+    "domain": "elementelectronics.com",
+    "file": "brand_logo_element.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "Elements",
+    "domain": "elementelectronics.com",
+    "file": "brand_logo_elements.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "Emerson",
+    "domain": "emerson.com",
+    "file": "brand_logo_emerson.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "Enseo",
+    "domain": "enseo.com",
+    "file": "brand_logo_enseo.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "FINLUX",
+    "domain": "finlux.com",
+    "file": "brand_logo_finlux.png",
+    "source": "google_favicon"
+  },
+  {
+    "brand": "Fetch",
+    "domain": "fetchtv.com.au",
+    "file": "brand_logo_fetch.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "Ffalcon",
+    "domain": "ffalcon.com.au",
+    "file": "brand_logo_ffalcon.png",
+    "source": "google_favicon"
+  },
+  {
+    "brand": "Funai",
+    "domain": "funaiamerica.com",
+    "file": "brand_logo_funai.png",
+    "source": "brandfetch_logo_light_png"
+  },
+  {
+    "brand": "Furrion",
+    "domain": "furrion.com",
+    "file": "brand_logo_furrion.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "GPX",
+    "domain": "gpx.com",
+    "file": "brand_logo_gpx.png",
+    "source": "google_favicon"
+  },
+  {
+    "brand": "Gigabyte",
+    "domain": "gigabyte.com",
+    "file": "brand_logo_gigabyte.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "Gogen",
+    "domain": "gogen.cz",
+    "file": "brand_logo_gogen.png",
+    "source": "brandfetch_logo_light_png"
+  },
+  {
+    "brand": "Grundig",
+    "domain": "grundig.com",
+    "file": "brand_logo_grundig.png",
+    "source": "brandfetch_logo_light_png"
+  },
+  {
+    "brand": "GuestTek",
+    "domain": "guesttek.com",
+    "file": "brand_logo_guesttek.png",
+    "source": "brandfetch_icon_png"
+  },
+  {
+    "brand": "Haier",
+    "domain": "haier.com",
+    "file": "brand_logo_haier.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "Hisense",
+    "domain": "hisense.com",
+    "file": "brand_logo_hisense.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "Hitachi",
+    "domain": "hitachi.com",
+    "file": "brand_logo_hitachi.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "JVC",
+    "domain": "jvc.com",
+    "file": "brand_logo_jvc.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "Kogan",
+    "domain": "kogan.com",
+    "file": "brand_logo_kogan.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "LG",
+    "domain": "lg.com",
+    "file": "brand_logo_lg.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "Loewe",
+    "domain": "loewe.tv",
+    "file": "brand_logo_loewe.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "Magnavox",
+    "domain": "magnavox.com",
+    "file": "brand_logo_magnavox.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "Manta",
+    "domain": "manta.com.pl",
+    "file": "brand_logo_manta.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "Medion",
+    "domain": "medion.com",
+    "file": "brand_logo_medion.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "Mivar",
+    "domain": "mivar.it",
+    "file": "brand_logo_mivar.png",
+    "source": "google_favicon"
+  },
+  {
+    "brand": "NEC",
+    "domain": "nec.com",
+    "file": "brand_logo_nec.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "Nevir",
+    "domain": "nevir.es",
+    "file": "brand_logo_nevir.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "Onn",
+    "domain": "onntvsupport.com",
+    "file": "brand_logo_onn.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "PDi",
+    "domain": "pdiarm.com",
+    "file": "brand_logo_pdi.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "Panasonic",
+    "domain": "panasonic.com",
+    "file": "brand_logo_panasonic.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "Philips",
+    "domain": "philips.com",
+    "file": "brand_logo_philips.png",
+    "source": "google_favicon"
+  },
+  {
+    "brand": "Pioneer",
+    "domain": "pioneerelectronics.com",
+    "file": "brand_logo_pioneer.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "PrismPlus",
+    "domain": "prismplus.sg",
+    "file": "brand_logo_prismplus.png",
+    "source": "brandfetch_logo_light_png"
+  },
+  {
+    "brand": "RCA",
+    "domain": "rca.com",
+    "file": "brand_logo_rca.png",
+    "source": "google_favicon"
+  },
+  {
+    "brand": "Roku",
+    "domain": "roku.com",
+    "file": "brand_logo_roku.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "Samsung",
+    "domain": "samsung.com",
+    "file": "brand_logo_samsung.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "Sanyo",
+    "domain": "sanyo-av.com",
+    "file": "brand_logo_sanyo.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "Sceptre",
+    "domain": "sceptre.com",
+    "file": "brand_logo_sceptre.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "Seiki",
+    "domain": "seiki.com",
+    "file": "brand_logo_seiki.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "Sencor",
+    "domain": "sencor.com",
+    "file": "brand_logo_sencor.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "Sharp",
+    "domain": "sharpconsumer.com",
+    "file": "brand_logo_sharp.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "SkyVue",
+    "domain": "skyvue.com",
+    "file": "brand_logo_skyvue.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "Soniq",
+    "domain": "soniq.com",
+    "file": "brand_logo_soniq.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "Sony",
+    "domain": "sony.com",
+    "file": "brand_logo_sony.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "Strong",
+    "domain": "strong.tv",
+    "file": "brand_logo_strong.png",
+    "source": "uplead"
+  },
+  {
+    "brand": "Sunbrite",
+    "domain": "sunbritetv.com",
+    "file": "brand_logo_sunbrite.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "Supra",
+    "domain": "supra.ru",
+    "file": "brand_logo_supra.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "Sweex",
+    "domain": "sweex.com",
+    "file": "brand_logo_sweex.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "TCL",
+    "domain": "tcl.com",
+    "file": "brand_logo_tcl.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "Technika",
+    "domain": "technika.com.au",
+    "file": "brand_logo_technika.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "Telecontrole",
+    "domain": "telecontrole.com.br",
+    "file": "brand_logo_telecontrole.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "Telefunken",
+    "domain": "telefunken.com",
+    "file": "brand_logo_telefunken.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "Telekom",
+    "domain": "telekom.de",
+    "file": "brand_logo_telekom.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "Thomson",
+    "domain": "mythomson.com",
+    "file": "brand_logo_thomson.png",
+    "source": "brandfetch_logo_light_png"
+  },
+  {
+    "brand": "Toshiba",
+    "domain": "toshiba.com",
+    "file": "brand_logo_toshiba.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "ViewSonic",
+    "domain": "viewsonic.com",
+    "file": "brand_logo_viewsonic.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "Vitec",
+    "domain": "vitec.com",
+    "file": "brand_logo_vitec.png",
+    "source": "google_favicon"
+  },
+  {
+    "brand": "Vizio",
+    "domain": "vizio.com",
+    "file": "brand_logo_vizio.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "Westinghouse",
+    "domain": "westinghouseelectronics.com",
+    "file": "brand_logo_westinghouse.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "Xiaomi",
+    "domain": "mi.com",
+    "file": "brand_logo_xiaomi.png",
+    "source": "brandfetch_logo_dark_png"
+  },
+  {
+    "brand": "Zenith",
+    "domain": "zenith.com",
+    "file": "brand_logo_zenith.png",
+    "source": "brandfetch_logo_dark_png"
+  }
+]

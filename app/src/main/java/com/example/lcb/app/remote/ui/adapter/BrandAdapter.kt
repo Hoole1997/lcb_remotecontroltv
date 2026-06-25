@@ -7,8 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.lcb.app.databinding.ItemBrandRowBinding
 import com.example.lcb.app.remote.model.TvBrand
 import com.example.lcb.app.remote.ui.BrandVisuals
+import com.example.lcb.app.remote.ui.bindBrandLogo
 import com.example.lcb.app.remote.ui.brandDisplayName
-import com.example.lcb.app.remote.ui.brandInitial
 
 class BrandAdapter(
     private val onClick: (TvBrand) -> Unit,
@@ -34,8 +34,7 @@ class BrandAdapter(
     class ViewHolder(private val binding: ItemBrandRowBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: TvBrand, isLast: Boolean, onClick: (TvBrand) -> Unit) {
             val visual = BrandVisuals.forName(item.name)
-            binding.letterText.text = item.name.brandInitial()
-            binding.letterText.setTextColor(visual.color)
+            bindBrandLogo(binding.logoImage, binding.fallbackInitialText, item.name, visual.color)
             binding.nameText.text = item.name.brandDisplayName()
             binding.countText.text = "${item.modelCount} 个型号"
             binding.divider.visibility = if (isLast) View.GONE else View.VISIBLE
