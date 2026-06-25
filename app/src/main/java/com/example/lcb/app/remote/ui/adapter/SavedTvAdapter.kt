@@ -37,8 +37,14 @@ class SavedTvAdapter(
             val primary = ContextCompat.getColor(context, R.color.remote_primary)
             val secondary = ContextCompat.getColor(context, R.color.remote_text_secondary)
             val outline = ContextCompat.getColor(context, R.color.remote_outline)
+            val softTeal = ContextCompat.getColor(context, R.color.remote_soft_teal)
+            val chipGray = ContextCompat.getColor(context, R.color.remote_chip_gray)
 
+            val density = context.resources.displayMetrics.density
             binding.card.strokeColor = if (selected) primary else outline
+            binding.card.strokeWidth = ((if (selected) 2f else 1f) * density).toInt()
+            binding.deviceIconContainer.backgroundTintList =
+                ColorStateList.valueOf(if (selected) softTeal else chipGray)
             binding.deviceIcon.imageTintList = ColorStateList.valueOf(if (selected) primary else secondary)
             binding.deviceNameText.text = item.displayName
             binding.modelText.text = "${item.brand.brandDisplayName()} TV"

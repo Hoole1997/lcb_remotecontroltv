@@ -4,43 +4,58 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/card"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/remote_card_height"
-    android:layout_marginBottom="12dp"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="14dp"
+    android:clickable="true"
+    android:focusable="true"
     app:cardBackgroundColor="@color/remote_surface"
-    app:cardCornerRadius="8dp"
-    app:cardElevation="0dp"
+    app:cardCornerRadius="@dimen/remote_corner_18"
+    app:cardElevation="1dp"
+    app:rippleColor="@color/remote_soft_teal"
     app:strokeColor="@color/remote_outline"
     app:strokeWidth="1dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingStart="20dp"
-        android:paddingEnd="16dp">
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/remote_card_min_height"
+        android:paddingStart="16dp"
+        android:paddingTop="16dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="16dp">
 
-        <ImageView
-            android:id="@+id/deviceIcon"
-            android:layout_width="44dp"
-            android:layout_height="44dp"
-            android:src="@drawable/ic_remote_tv"
+        <FrameLayout
+            android:id="@+id/deviceIconContainer"
+            android:layout_width="@dimen/remote_icon_tile"
+            android:layout_height="@dimen/remote_icon_tile"
+            android:background="@drawable/bg_icon_tile"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/deviceIcon"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_gravity="center"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_remote_tv" />
+        </FrameLayout>
 
         <TextView
             android:id="@+id/deviceNameText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="18dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginEnd="12dp"
             android:ellipsize="end"
             android:maxLines="1"
             android:textColor="@color/remote_on_surface"
-            android:textSize="21sp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@id/modelText"
-            app:layout_constraintEnd_toStartOf="@id/sceneChip"
-            app:layout_constraintStart_toEndOf="@id/deviceIcon"
+            app:layout_constraintEnd_toStartOf="@id/rightCluster"
+            app:layout_constraintStart_toEndOf="@id/deviceIconContainer"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed"
             tools:text="客厅电视" />
@@ -49,50 +64,75 @@
             android:id="@+id/modelText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="3dp"
             android:ellipsize="end"
             android:maxLines="1"
             android:textColor="@color/remote_text_secondary"
-            android:textSize="16sp"
+            android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/deviceNameText"
             app:layout_constraintStart_toStartOf="@id/deviceNameText"
             app:layout_constraintTop_toBottomOf="@id/deviceNameText"
             tools:text="Samsung TV" />
 
-        <TextView
-            android:id="@+id/sceneChip"
-            android:layout_width="46dp"
-            android:layout_height="32dp"
-            android:background="@drawable/bg_remote_chip"
-            android:gravity="center"
-            android:textColor="@color/remote_on_surface"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/readyText"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="客厅" />
-
-        <TextView
-            android:id="@+id/readyText"
+        <LinearLayout
+            android:id="@+id/rightCluster"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="● IR Ready"
-            android:textColor="@color/remote_primary"
-            android:textSize="14sp"
+            android:gravity="end"
+            android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/chevronIcon"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/sceneChip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_remote_chip"
+                android:gravity="center"
+                android:minWidth="48dp"
+                android:paddingStart="12dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="12dp"
+                android:paddingBottom="5dp"
+                android:textColor="@color/remote_on_surface"
+                android:textSize="13sp"
+                tools:text="客厅" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:background="@drawable/bg_status_dot" />
+
+                <TextView
+                    android:id="@+id/readyText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:text="IR Ready"
+                    android:textColor="@color/remote_status_green"
+                    android:textSize="13sp" />
+            </LinearLayout>
+        </LinearLayout>
 
         <ImageView
             android:id="@+id/chevronIcon"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="8dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="10dp"
+            android:contentDescription="@null"
             android:src="@drawable/ic_remote_chevron"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/remote_text_secondary" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>
