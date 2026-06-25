@@ -21,7 +21,7 @@
 
     <style name="TextAppearance_LCB_HomeBottomNav_Active">
         <item name="android:fontFamily">sans</item>
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">12sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:letterSpacing">0</item>
     </style>
@@ -35,8 +35,8 @@
 
     <style name="HomeBottomNavIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
         <item name="android:color">@color/remote_soft_teal</item>
-        <item name="android:width">64dp</item>
-        <item name="android:height">34dp</item>
+        <item name="android:width">56dp</item>
+        <item name="android:height">30dp</item>
         <item name="marginHorizontal">10dp</item>
         <item name="shapeAppearance">@style/ShapeAppearance.Material3.Corner.Full</item>
     </style>

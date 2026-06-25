@@ -21,9 +21,6 @@
         android:theme="@style/Theme.LCB_Template"
         tools:replace="android:name">
         <activity
-            android:name=".SettingsActivity"
-            android:exported="false" />
-        <activity
             android:name=".RemoteControlActivity"
             android:exported="false" />
         <activity

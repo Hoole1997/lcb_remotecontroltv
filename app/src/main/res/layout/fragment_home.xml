@@ -2,11 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/homeRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/remote_background"
-    tools:context=".MainActivity">
+    tools:context=".HomeFragment">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/homeToolbar"
@@ -40,7 +40,7 @@
         android:layout_height="0dp"
         android:paddingStart="24dp"
         android:paddingEnd="24dp"
-        app:layout_constraintBottom_toTopOf="@id/bottomDivider"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/topDivider">
@@ -118,7 +118,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@id/bottomDivider"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/topDivider"
@@ -129,7 +129,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="24dp"
             android:letterSpacing="0.04"
             android:text="已添加设备"
@@ -145,12 +145,12 @@
             android:id="@+id/savedTvRecycler"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="18dp"
-            android:layout_marginEnd="24dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginEnd="20dp"
             android:clipToPadding="false"
             android:overScrollMode="never"
-            android:paddingBottom="136dp"
+            android:paddingBottom="120dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -161,16 +161,16 @@
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:id="@+id/homeFloatingAdd"
             android:layout_width="wrap_content"
-            android:layout_height="62dp"
-            android:layout_marginBottom="40dp"
-            android:paddingStart="28dp"
-            android:paddingEnd="32dp"
+            android:layout_height="56dp"
+            android:layout_marginBottom="24dp"
+            android:paddingStart="26dp"
+            android:paddingEnd="30dp"
             android:text="添加电视"
             android:textColor="@android:color/white"
-            android:textSize="17sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:backgroundTint="@color/remote_primary"
-            app:cornerRadius="31dp"
+            app:cornerRadius="28dp"
             app:elevation="6dp"
             app:icon="@drawable/ic_remote_add_white"
             app:iconGravity="textStart"
@@ -180,36 +180,5 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <View
-        android:id="@+id/bottomDivider"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:background="@color/remote_outline"
-        app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigation"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@color/remote_surface"
-        android:minHeight="@dimen/remote_bottom_nav_height"
-        android:paddingTop="10dp"
-        android:paddingBottom="12dp"
-        app:elevation="0dp"
-        app:itemActiveIndicatorStyle="@style/HomeBottomNavIndicator"
-        app:itemIconSize="24dp"
-        app:itemIconTint="@color/selector_home_nav_item"
-        app:itemRippleColor="@color/remote_soft_teal"
-        app:itemTextAppearanceActive="@style/TextAppearance_LCB_HomeBottomNav_Active"
-        app:itemTextAppearanceInactive="@style/TextAppearance_LCB_HomeBottomNav_Inactive"
-        app:itemTextColor="@color/selector_home_nav_item"
-        app:labelVisibilityMode="labeled"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/menu_home_bottom" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

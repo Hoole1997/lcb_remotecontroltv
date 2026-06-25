@@ -49,8 +49,7 @@ class SavedTvAdapter(
             binding.deviceNameText.text = item.displayName
             binding.modelText.text = "${item.brand.brandDisplayName()} TV"
             binding.sceneChip.text = item.scene
-            binding.sceneChip.setTextColor(if (selected) primary else ContextCompat.getColor(context, R.color.remote_on_surface))
-            binding.sceneChip.setBackgroundResource(if (selected) R.drawable.bg_remote_chip_selected else R.drawable.bg_remote_chip)
+            binding.sceneChip.setTextColor(if (selected) primary else secondary)
             binding.root.setOnClickListener { onClick(item) }
         }
     }
