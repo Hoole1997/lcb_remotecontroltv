@@ -14,7 +14,7 @@ import com.example.lcb.app.remote.data.AssetTvRemoteRepository
 import com.example.lcb.app.remote.data.SharedPreferencesSavedTvRepository
 import com.example.lcb.app.remote.model.TvBrand
 import com.example.lcb.app.remote.model.TvRemoteProfile
-import com.example.lcb.app.remote.ui.AddRemoteDialog
+import com.example.lcb.app.remote.ui.AddRemoteSheet
 import com.example.lcb.app.remote.ui.adapter.BrandAdapter
 import com.example.lcb.app.remote.ui.adapter.CommonBrandAdapter
 import com.example.lcb.app.remote.ui.applySystemBarInsets
@@ -70,7 +70,7 @@ class BrandListActivity : AppCompatActivity() {
     }
 
     private fun showAddDialog(profile: TvRemoteProfile) {
-        AddRemoteDialog.show(this, profile) { savedTv ->
+        AddRemoteSheet.show(this, profile) { savedTv ->
             savedTvRepository.add(savedTv)
             Toast.makeText(this, "已添加 ${savedTv.displayName}", Toast.LENGTH_SHORT).show()
             startActivity(RemoteControlActivity.createIntent(this, savedTv.id))
