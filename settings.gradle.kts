@@ -44,7 +44,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "LCB_Template"
+rootProject.name = "LCB_UniversalRemoteControl"
 include(":app")
 //include(":bill")
 //include(":core")

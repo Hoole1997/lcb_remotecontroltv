@@ -2,4 +2,16 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="remote_primary">#2E7D6B</color>
+    <color name="remote_surface">#FFFFFF</color>
+    <color name="remote_background">#F8F9F7</color>
+    <color name="remote_on_surface">#202124</color>
+    <color name="remote_text_secondary">#6F756F</color>
+    <color name="remote_outline">#DDDFE2</color>
+    <color name="remote_soft_teal">#E9F4F1</color>
+    <color name="remote_chip_gray">#F0F1F2</color>
+    <color name="remote_pink">#B92A63</color>
+    <color name="remote_orange">#F04B2F</color>
+    <color name="remote_blue">#2F5DA8</color>
+    <color name="remote_yellow_soft">#FFE4A3</color>
 </resources>

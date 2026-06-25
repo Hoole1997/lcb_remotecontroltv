@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/remote_nav_tv"
+        android:icon="@drawable/ic_remote_tv"
+        android:title="电视" />
+    <item
+        android:id="@+id/remote_nav_settings"
+        android:icon="@drawable/ic_remote_settings"
+        android:title="设置" />
+</menu>

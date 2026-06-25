@@ -3,6 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.TRANSMIT_IR" />
+
+    <uses-feature
+        android:name="android.hardware.consumerir"
+        android:required="false" />
 
     <application
         android:name=".LcbApp"
@@ -16,8 +21,23 @@
         android:theme="@style/Theme.LCB_Template"
         tools:replace="android:name">
         <activity
+            android:name=".RemoteControlActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ModelListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BrandListActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
-            android:exported="true" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

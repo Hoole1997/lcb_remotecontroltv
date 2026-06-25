@@ -1,0 +1,12 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="260dp" android:height="220dp" android:viewportWidth="260" android:viewportHeight="220">
+    <path android:fillColor="#EAF4F0" android:pathData="M132,18 A88,88 0,1 0,132,194 A88,88 0,1 0,132,18" />
+    <path android:strokeColor="#30323A" android:strokeWidth="3" android:strokeLineJoin="round" android:fillColor="#F7FBF9" android:pathData="M45,80 L178,80 Q182,80 182,84 L182,150 Q182,154 178,154 L45,154 Q41,154 41,150 L41,84 Q41,80 45,80 Z" />
+    <path android:strokeColor="#30323A" android:strokeWidth="2" android:strokeLineCap="round" android:fillColor="@android:color/transparent" android:pathData="M106,154 L106,172 M134,154 L134,172 M86,172 L155,172" />
+    <path android:strokeColor="#A9CFC7" android:strokeWidth="2" android:strokeLineCap="round" android:fillColor="@android:color/transparent" android:pathData="M24,178 L202,178 M26,130 C16,110 28,96 32,116 C36,135 28,160 28,178 M35,150 C20,140 22,132 39,145 C50,154 48,167 39,178" />
+    <path android:strokeColor="#A9CFC7" android:strokeWidth="2" android:fillColor="@android:color/transparent" android:pathData="M24,154 L42,154 L38,178 L28,178 Z" />
+    <path android:strokeColor="#30323A" android:strokeWidth="2.5" android:strokeLineJoin="round" android:fillColor="#F9FAFA" android:pathData="M160,112 L188,112 Q197,112 197,121 L197,192 Q197,202 188,202 L160,202 Q151,202 151,192 L151,121 Q151,112 160,112 Z" />
+    <path android:strokeColor="#30323A" android:strokeWidth="2" android:strokeLineCap="round" android:fillColor="@android:color/transparent" android:pathData="M174,120 L174,130 M170,124 L174,128 L178,124" />
+    <path android:fillColor="#444753" android:pathData="M174,139 A15,15 0,1 0,174,169 A15,15 0,1 0,174,139" />
+    <path android:fillColor="#FFFFFF" android:pathData="M174,143 L177,149 L171,149 Z M174,165 L171,159 L177,159 Z M163,154 L169,151 L169,157 Z M185,154 L179,157 L179,151 Z" />
+    <path android:fillColor="#444753" android:pathData="M165,178 A5,5 0,1 0,165,188 A5,5 0,1 0,165,178 M184,178 A5,5 0,1 0,184,188 A5,5 0,1 0,184,178 M165,195 A5,5 0,1 0,165,205 A5,5 0,1 0,165,195 M184,195 A5,5 0,1 0,184,205 A5,5 0,1 0,184,195" />
+</vector>

@@ -1,9 +1,71 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.LCB_Template" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/remote_primary</item>
+        <item name="colorSecondary">@color/remote_primary</item>
+        <item name="android:colorAccent">@color/remote_primary</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar">true</item>
+        <item name="android:windowBackground">@color/remote_background</item>
+        <item name="android:fontFamily">sans</item>
     </style>
 
     <style name="Theme.LCB_Template" parent="Base.Theme.LCB_Template" />
+
+    <style name="TextAppearance_LCB_HomeToolbarTitle">
+        <item name="android:fontFamily">sans</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+
+    <style name="TextAppearance_LCB_HomeBottomNav_Active">
+        <item name="android:fontFamily">sans</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+
+    <style name="TextAppearance_LCB_HomeBottomNav_Inactive">
+        <item name="android:fontFamily">sans</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+
+    <style name="Widget.LCB.RemoteButton" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="android:layout_width">80dp</item>
+        <item name="android:layout_height">80dp</item>
+        <item name="cornerRadius">40dp</item>
+        <item name="backgroundTint">@color/remote_surface</item>
+        <item name="strokeColor">@color/remote_outline</item>
+        <item name="android:textColor">@color/remote_on_surface</item>
+    </style>
+
+    <style name="Widget.LCB.RemoteButton.Primary" parent="Widget.Material3.Button">
+        <item name="android:layout_width">80dp</item>
+        <item name="android:layout_height">80dp</item>
+        <item name="cornerRadius">40dp</item>
+        <item name="backgroundTint">@color/remote_primary</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="Widget.LCB.SmallRemoteButton" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="android:layout_width">72dp</item>
+        <item name="android:layout_height">42dp</item>
+        <item name="cornerRadius">21dp</item>
+        <item name="backgroundTint">@color/remote_surface</item>
+        <item name="strokeColor">@color/remote_outline</item>
+        <item name="android:textColor">@color/remote_on_surface</item>
+    </style>
+
+    <style name="Widget.LCB.UtilityButton" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="android:layout_width">104dp</item>
+        <item name="android:layout_height">52dp</item>
+        <item name="android:layout_margin">4dp</item>
+        <item name="cornerRadius">8dp</item>
+        <item name="backgroundTint">@color/remote_surface</item>
+        <item name="strokeColor">@color/remote_outline</item>
+        <item name="android:textColor">@color/remote_on_surface</item>
+    </style>
 </resources>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="70dp"
+    android:layout_height="88dp"
+    android:layout_marginEnd="12dp"
+    app:cardBackgroundColor="@color/remote_surface"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="0dp"
+    app:strokeColor="@color/remote_outline"
+    app:strokeWidth="1dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/letterText"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/bg_brand_circle_teal"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:textSize="21sp"
+            tools:text="S" />
+
+        <TextView
+            android:id="@+id/nameText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:textColor="@color/remote_on_surface"
+            android:textSize="15sp"
+            tools:text="Samsung" />
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

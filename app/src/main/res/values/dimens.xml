@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="remote_space_4">4dp</dimen>
+    <dimen name="remote_space_8">8dp</dimen>
+    <dimen name="remote_space_12">12dp</dimen>
+    <dimen name="remote_space_16">16dp</dimen>
+    <dimen name="remote_space_20">20dp</dimen>
+    <dimen name="remote_space_24">24dp</dimen>
+    <dimen name="remote_space_32">32dp</dimen>
+    <dimen name="remote_corner_8">8dp</dimen>
+    <dimen name="remote_corner_14">14dp</dimen>
+    <dimen name="remote_top_bar_height">64dp</dimen>
+    <dimen name="remote_bottom_nav_height">80dp</dimen>
+    <dimen name="remote_card_height">112dp</dimen>
+    <dimen name="remote_list_row_height">82dp</dimen>
+</resources>

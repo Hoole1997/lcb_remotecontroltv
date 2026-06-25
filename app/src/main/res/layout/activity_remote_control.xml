@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/remote_background">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/topBar"
+        android:layout_width="0dp"
+        android:layout_height="94dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_marginStart="14dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="返回"
+            android:padding="12dp"
+            android:src="@drawable/ic_remote_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.62" />
+
+        <TextView
+            android:id="@+id/titleText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginEnd="24dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/remote_on_surface"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/subtitleText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/backButton"
+            app:layout_constraintTop_toTopOf="@id/backButton"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/subtitleText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/remote_text_secondary"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@id/backButton"
+            app:layout_constraintEnd_toEndOf="@id/titleText"
+            app:layout_constraintStart_toStartOf="@id/titleText"
+            app:layout_constraintTop_toBottomOf="@id/titleText" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/irStatusText"
+        android:layout_width="0dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/bg_remote_chip_selected"
+        android:gravity="center"
+        android:text="IR Ready"
+        android:textColor="@color/remote_primary"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/topBar" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/powerButton"
+        android:layout_width="118dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/bg_remote_button_pill"
+        android:text="Power"
+        android:textColor="@android:color/white"
+        app:backgroundTint="@color/remote_orange"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/irStatusText" />
+
+    <GridLayout
+        android:id="@+id/dpadGrid"
+        android:layout_width="240dp"
+        android:layout_height="240dp"
+        android:layout_marginTop="24dp"
+        android:columnCount="3"
+        android:rowCount="3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/powerButton">
+
+        <Space android:layout_width="80dp" android:layout_height="80dp" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/upButton" style="@style/Widget.LCB.RemoteButton" android:text="▲" />
+        <Space android:layout_width="80dp" android:layout_height="80dp" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/leftButton" style="@style/Widget.LCB.RemoteButton" android:text="◀" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/okButton" style="@style/Widget.LCB.RemoteButton.Primary" android:text="OK" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/rightButton" style="@style/Widget.LCB.RemoteButton" android:text="▶" />
+        <Space android:layout_width="80dp" android:layout_height="80dp" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/downButton" style="@style/Widget.LCB.RemoteButton" android:text="▼" />
+        <Space android:layout_width="80dp" android:layout_height="80dp" />
+    </GridLayout>
+
+    <LinearLayout
+        android:id="@+id/volumeChannelRow"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dpadGrid">
+
+        <include
+            android:id="@+id/volumeControl"
+            layout="@layout/view_remote_vertical_control"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1" />
+
+        <include
+            android:id="@+id/channelControl"
+            layout="@layout/view_remote_vertical_control"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <GridLayout
+        android:id="@+id/utilityGrid"
+        android:layout_width="0dp"
+        android:layout_height="128dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="24dp"
+        android:columnCount="3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/volumeChannelRow">
+
+        <com.google.android.material.button.MaterialButton android:id="@+id/muteButton" style="@style/Widget.LCB.UtilityButton" android:text="Mute" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/sourceButton" style="@style/Widget.LCB.UtilityButton" android:text="Source" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/homeButton" style="@style/Widget.LCB.UtilityButton" android:text="Home" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/backRemoteButton" style="@style/Widget.LCB.UtilityButton" android:text="Back" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/menuButton" style="@style/Widget.LCB.UtilityButton" android:text="Menu" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/settingsButton" style="@style/Widget.LCB.UtilityButton" android:text="Settings" />
+    </GridLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

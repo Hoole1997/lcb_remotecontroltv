@@ -259,6 +259,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.recyclerview)
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.analytics)
     implementation(libs.firebase.config)
@@ -276,7 +277,7 @@ dependencies {
 //    implementation(project(":core"))
     implementation(project(":metrics"))
     implementation("com.github.toukaremax:core:1.0.11")
-    implementation("com.github.toukaremax:bill:lcb_1.0") {
+    implementation("com.github.toukaremax:bill:1.0.31") {
         // Launcher SDK provides com.unity3d.ads-mediation:mediation-sdk:9.2.0.
         // Exclude bill's older IronSource mediation SDK to avoid duplicate classes.
         exclude(group = "com.ironsource.sdk", module = "mediationsdk")

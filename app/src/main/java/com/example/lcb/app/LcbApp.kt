@@ -11,7 +11,7 @@ class LcbApp : com.leafmotivation.quizguessoncolor.Iej9ieio6r89e7ya() {
         var lcbApp: LcbApp? = null
 
         fun backLaunchActivity() {
-            lcbApp?.smartbackuptoolsignal()
+            lcbApp?.scansafeloc()
         }
     }
 
