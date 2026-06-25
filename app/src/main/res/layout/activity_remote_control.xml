@@ -75,15 +75,15 @@
                 android:columnCount="3"
                 android:rowCount="3">
 
-                <Space android:layout_width="62dp" android:layout_height="62dp" />
-                <com.google.android.material.button.MaterialButton android:id="@+id/upButton" style="@style/Widget.LCB.RemoteButton" android:layout_margin="3dp" android:text="▲" />
-                <Space android:layout_width="62dp" android:layout_height="62dp" />
-                <com.google.android.material.button.MaterialButton android:id="@+id/leftButton" style="@style/Widget.LCB.RemoteButton" android:layout_margin="3dp" android:text="◀" />
-                <com.google.android.material.button.MaterialButton android:id="@+id/okButton" style="@style/Widget.LCB.RemoteButton.Primary" android:layout_margin="3dp" android:text="OK" />
-                <com.google.android.material.button.MaterialButton android:id="@+id/rightButton" style="@style/Widget.LCB.RemoteButton" android:layout_margin="3dp" android:text="▶" />
-                <Space android:layout_width="62dp" android:layout_height="62dp" />
-                <com.google.android.material.button.MaterialButton android:id="@+id/downButton" style="@style/Widget.LCB.RemoteButton" android:layout_margin="3dp" android:text="▼" />
-                <Space android:layout_width="62dp" android:layout_height="62dp" />
+                <Space android:layout_width="58dp" android:layout_height="58dp" android:layout_margin="3dp" android:layout_row="0" android:layout_column="0" />
+                <com.google.android.material.button.MaterialButton android:id="@+id/upButton" style="@style/Widget.LCB.RemoteButton" android:layout_row="0" android:layout_column="1" android:layout_gravity="center" android:layout_margin="3dp" android:text="▲" />
+                <Space android:layout_width="58dp" android:layout_height="58dp" android:layout_margin="3dp" android:layout_row="0" android:layout_column="2" />
+                <com.google.android.material.button.MaterialButton android:id="@+id/leftButton" style="@style/Widget.LCB.RemoteButton" android:layout_row="1" android:layout_column="0" android:layout_gravity="center" android:layout_margin="3dp" android:text="◀" />
+                <com.google.android.material.button.MaterialButton android:id="@+id/okButton" style="@style/Widget.LCB.RemoteButton.Primary" android:layout_row="1" android:layout_column="1" android:layout_gravity="center" android:layout_margin="3dp" android:text="OK" />
+                <com.google.android.material.button.MaterialButton android:id="@+id/rightButton" style="@style/Widget.LCB.RemoteButton" android:layout_row="1" android:layout_column="2" android:layout_gravity="center" android:layout_margin="3dp" android:text="▶" />
+                <Space android:layout_width="58dp" android:layout_height="58dp" android:layout_margin="3dp" android:layout_row="2" android:layout_column="0" />
+                <com.google.android.material.button.MaterialButton android:id="@+id/downButton" style="@style/Widget.LCB.RemoteButton" android:layout_row="2" android:layout_column="1" android:layout_gravity="center" android:layout_margin="3dp" android:text="▼" />
+                <Space android:layout_width="58dp" android:layout_height="58dp" android:layout_margin="3dp" android:layout_row="2" android:layout_column="2" />
             </GridLayout>
 
             <LinearLayout
