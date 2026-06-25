@@ -1,8 +1,10 @@
 package com.example.lcb.app
 
+import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -47,6 +49,12 @@ class BrandListActivity : AppCompatActivity() {
 
         binding.toolbar.setNavigationOnClickListener { finish() }
         binding.searchEditText.addTextChangedListener(searchWatcher())
+        binding.contentScroll.setOnScrollChangeListener { _, _, _, _, _ ->
+            if (binding.searchEditText.isFocused) {
+                binding.searchEditText.clearFocus()
+                hideKeyboard()
+            }
+        }
 
         commonBrandAdapter.submitList(commonBrands())
         renderBrands("")
@@ -80,6 +88,11 @@ class BrandListActivity : AppCompatActivity() {
     private fun commonBrands(): List<TvBrand> {
         val names = listOf("Samsung", "LG", "Sony", "TCL", "Hisense")
         return names.mapNotNull { name -> allBrands.firstOrNull { it.name.equals(name, ignoreCase = true) } }
+    }
+
+    private fun hideKeyboard() {
+        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(binding.searchEditText.windowToken, 0)
     }
 
     private fun searchWatcher(): TextWatcher {
