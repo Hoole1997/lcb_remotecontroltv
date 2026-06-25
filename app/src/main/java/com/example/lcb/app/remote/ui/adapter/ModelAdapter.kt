@@ -51,7 +51,7 @@ class ModelAdapter(
             val secondary = ContextCompat.getColor(context, R.color.remote_text_secondary)
             binding.remoteIcon.imageTintList = ColorStateList.valueOf(if (selected) primary else secondary)
             binding.nameText.text = item.displayName
-            binding.protocolText.text = "协议: ${item.primaryProtocol()}"
+            binding.protocolText.text = context.getString(R.string.model_protocol_format, item.primaryProtocol())
             binding.checkIcon.visibility = if (selected) View.VISIBLE else View.GONE
             binding.root.setOnClickListener { onClick() }
         }

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/optionRoot"
+    android:layout_width="match_parent"
+    android:layout_height="64dp"
+    android:layout_marginBottom="8dp"
+    android:background="@drawable/bg_language_option"
+    android:clickable="true"
+    android:focusable="true"
+    android:paddingStart="14dp"
+    android:paddingEnd="14dp">
+
+    <TextView
+        android:id="@+id/countryCodeText"
+        android:layout_width="42dp"
+        android:layout_height="36dp"
+        android:background="@drawable/bg_language_code"
+        android:gravity="center"
+        android:textColor="@color/remote_primary"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="CN" />
+
+    <TextView
+        android:id="@+id/countryNameText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginEnd="12dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/remote_on_surface"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/languageNameText"
+        app:layout_constraintEnd_toStartOf="@id/checkIcon"
+        app:layout_constraintStart_toEndOf="@id/countryCodeText"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="China" />
+
+    <TextView
+        android:id="@+id/languageNameText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginEnd="12dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/remote_text_secondary"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/checkIcon"
+        app:layout_constraintStart_toEndOf="@id/countryCodeText"
+        app:layout_constraintTop_toBottomOf="@id/countryNameText"
+        tools:text="Simplified Chinese" />
+
+    <ImageView
+        android:id="@+id/checkIcon"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:contentDescription="@null"
+        android:src="@drawable/ic_remote_check"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/remote_primary"
+        tools:visibility="visible" />
+</androidx.constraintlayout.widget.ConstraintLayout>

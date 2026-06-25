@@ -71,7 +71,7 @@
         app:layout_constraintEnd_toEndOf="@id/nameText"
         app:layout_constraintStart_toStartOf="@id/nameText"
         app:layout_constraintTop_toBottomOf="@id/nameText"
-        tools:text="12 个型号" />
+        tools:text="12 models" />
 
     <ImageView
         android:id="@+id/chevronIcon"

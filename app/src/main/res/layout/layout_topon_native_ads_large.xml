@@ -16,14 +16,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- 顶部区域：图标和标题 -->
+        <!-- Header: icon and title -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
-            <!-- 应用图标 -->
+            <!-- App icon -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/iconCv"
                 android:layout_width="wrap_content"
@@ -40,7 +40,7 @@
                     android:src="@android:drawable/ic_menu_info_details" />
             </androidx.cardview.widget.CardView>
 
-            <!-- 标题和描述区域 -->
+            <!-- Title and description area -->
             <LinearLayout
                 android:id="@+id/contentLL"
                 android:layout_width="0dp"
@@ -48,7 +48,7 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
 
-                <!-- 广告标题行 -->
+                <!-- Ad title row -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -60,7 +60,7 @@
                         android:layout_height="15dp"
                         android:background="@drawable/bg_ad_label_gray"
                         android:gravity="center"
-                        android:text="AD"
+                        android:text="@string/ad_label_upper"
                         android:textColor="#fff"
                         android:textSize="10sp" />
 
@@ -75,10 +75,10 @@
                         android:textColor="#333333"
                         android:textSize="14sp"
                         android:textStyle="bold"
-                        tools:text="广告标题" />
+                        tools:text="Ad title" />
                 </LinearLayout>
 
-                <!-- 广告描述 -->
+                <!-- Ad description -->
                 <TextView
                     android:id="@+id/tv_ad_description"
                     android:layout_width="match_parent"
@@ -88,13 +88,13 @@
                     android:maxLines="2"
                     android:textColor="#999999"
                     android:textSize="12sp"
-                    tools:text="广告描述" />
+                    tools:text="Ad description" />
 
             </LinearLayout>
 
         </LinearLayout>
 
-        <!-- CTA按钮 -->
+        <!-- CTA button -->
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/btn_ad_cta"
             android:layout_width="match_parent"
@@ -105,7 +105,7 @@
             android:textColor="@android:color/white"
             android:textSize="14sp"
             android:textStyle="bold"
-            tools:text="INSTALL" />
+            tools:text="@string/ad_install" />
 
     </LinearLayout>
 

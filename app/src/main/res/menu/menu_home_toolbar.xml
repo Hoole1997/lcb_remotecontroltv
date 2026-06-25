@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/action_add_tv"
-        android:contentDescription="添加电视"
+        android:contentDescription="@string/add_tv"
         android:icon="@drawable/ic_remote_add"
-        android:title="添加电视"
+        android:title="@string/add_tv"
         app:showAsAction="always" />
 </menu>

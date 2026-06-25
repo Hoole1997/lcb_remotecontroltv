@@ -67,7 +67,7 @@ class ModelListActivity : AppCompatActivity() {
         val visual = BrandVisuals.forName(brand.name)
         bindBrandLogo(binding.brandLogoImage, binding.brandFallbackInitialText, brand.name, visual.color)
         binding.brandNameText.text = brand.name.brandDisplayName()
-        binding.brandCountText.text = "${brand.modelCount} 个可用遥控码"
+        binding.brandCountText.text = getString(R.string.brand_remote_count_format, brand.modelCount)
     }
 
     private fun hideKeyboard() {
@@ -78,7 +78,7 @@ class ModelListActivity : AppCompatActivity() {
     private fun showAddDialog(profile: TvRemoteProfile) {
         AddRemoteSheet.show(this, profile) { savedTv ->
             savedTvRepository.add(savedTv)
-            Toast.makeText(this, "已添加 ${savedTv.displayName}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.added_tv_toast_format, savedTv.displayName), Toast.LENGTH_SHORT).show()
             startActivity(RemoteControlActivity.createIntent(this, savedTv.id))
             finish()
         }

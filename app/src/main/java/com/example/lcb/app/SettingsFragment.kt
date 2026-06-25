@@ -8,23 +8,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.os.LocaleListCompat
 import androidx.fragment.app.Fragment
 import com.example.lcb.app.databinding.FragmentSettingsBinding
+import com.example.lcb.app.language.AppLanguage
+import com.example.lcb.app.language.LanguageBottomSheet
 
 class SettingsFragment : Fragment() {
     private var _binding: FragmentSettingsBinding? = null
     private val binding get() = _binding!!
-
-    private data class Language(val tag: String, val label: String)
-
-    private val languages = listOf(
-        Language("", "跟随系统"),
-        Language("zh-CN", "简体中文"),
-        Language("en", "English"),
-    )
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,11 +31,11 @@ class SettingsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.versionText.text = "版本 ${appVersionName()}"
+        binding.versionText.text = getString(R.string.settings_version_format, appVersionName())
         updateLanguageValue()
 
         binding.rowFeedback.setOnClickListener { sendFeedback() }
-        binding.rowLanguage.setOnClickListener { showLanguageDialog() }
+        binding.rowLanguage.setOnClickListener { showLanguageSheet() }
         binding.rowPrivacy.setOnClickListener { openPrivacyPolicy() }
     }
 
@@ -58,42 +51,37 @@ class SettingsFragment : Fragment() {
     private fun sendFeedback() {
         val intent = Intent(Intent.ACTION_SENDTO).apply {
             data = Uri.parse("mailto:")
-            putExtra(Intent.EXTRA_EMAIL, arrayOf("support@lcb-remote.app"))
-            putExtra(Intent.EXTRA_SUBJECT, "${getString(R.string.app_name)} 反馈")
+            putExtra(Intent.EXTRA_EMAIL, arrayOf("biolumianescent@gmail.com"))
+            putExtra(Intent.EXTRA_SUBJECT, getString(R.string.feedback_subject_format, getString(R.string.app_name)))
         }
         try {
             startActivity(intent)
         } catch (e: ActivityNotFoundException) {
-            Toast.makeText(requireContext(), "未找到可用的邮件应用", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), R.string.mail_app_not_found, Toast.LENGTH_SHORT).show()
         }
     }
 
-    private fun currentLanguage(): Language {
+    private fun selectedLanguageTag(): String {
         val locales = AppCompatDelegate.getApplicationLocales()
-        if (locales.isEmpty) return languages.first()
-        val current = locales[0]?.language ?: return languages.first()
-        return languages.firstOrNull { it.tag.startsWith(current) && it.tag.isNotEmpty() }
-            ?: languages.first()
+        return if (locales.isEmpty) "" else locales[0]?.toLanguageTag().orEmpty()
     }
 
     private fun updateLanguageValue() {
-        binding.languageValue.text = currentLanguage().label
+        val selectedTag = selectedLanguageTag()
+        val language = AppLanguage.supported(requireContext()).firstOrNull { it.matches(selectedTag) }
+            ?: AppLanguage.supported(requireContext()).first()
+        binding.languageValue.text = language.countryName
     }
 
-    private fun showLanguageDialog() {
-        val labels = languages.map { it.label }.toTypedArray()
-        val checked = languages.indexOf(currentLanguage()).coerceAtLeast(0)
-        AlertDialog.Builder(requireContext())
-            .setTitle("选择语言")
-            .setSingleChoiceItems(labels, checked) { dialog, which ->
-                applyLanguage(languages[which])
-                dialog.dismiss()
-            }
-            .setNegativeButton("取消", null)
-            .show()
+    private fun showLanguageSheet() {
+        LanguageBottomSheet.show(
+            activity = requireActivity() as androidx.appcompat.app.AppCompatActivity,
+            selectedTag = selectedLanguageTag(),
+            onSelected = ::applyLanguage,
+        )
     }
 
-    private fun applyLanguage(language: Language) {
+    private fun applyLanguage(language: AppLanguage) {
         val locales = if (language.tag.isEmpty()) {
             LocaleListCompat.getEmptyLocaleList()
         } else {
@@ -104,11 +92,11 @@ class SettingsFragment : Fragment() {
     }
 
     private fun openPrivacyPolicy() {
-        val uri = Uri.parse("https://sites.google.com/view/lcb-tv-remote/privacy-policy")
+        val uri = Uri.parse("https://bioluminescents.com/privacy.html")
         try {
             startActivity(Intent(Intent.ACTION_VIEW, uri))
         } catch (e: ActivityNotFoundException) {
-            Toast.makeText(requireContext(), "未找到可用的浏览器", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), R.string.browser_not_found, Toast.LENGTH_SHORT).show()
         }
     }
 

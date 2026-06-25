@@ -64,7 +64,7 @@
             android:layout_marginStart="10dp"
             android:layout_weight="1"
             android:lineSpacingExtra="1dp"
-            android:text="当前手机未检测到红外发射器，无法直接发送遥控信号"
+            android:text="@string/remote_no_ir_tip"
             android:textColor="@color/remote_warning_text"
             android:textSize="13sp" />
     </LinearLayout>
@@ -98,7 +98,7 @@
                 android:minWidth="120dp"
                 android:paddingStart="24dp"
                 android:paddingEnd="24dp"
-                android:text="电源"
+                android:text="@string/remote_power"
                 android:textColor="@android:color/white"
                 app:backgroundTint="@color/remote_orange"
                 app:cornerRadius="14dp"
@@ -159,12 +159,12 @@
                 android:layout_marginTop="22dp"
                 android:columnCount="3">
 
-                <com.google.android.material.button.MaterialButton android:id="@+id/muteButton" style="@style/Widget.LCB.UtilityButton" android:text="静音" />
-                <com.google.android.material.button.MaterialButton android:id="@+id/sourceButton" style="@style/Widget.LCB.UtilityButton" android:text="信号源" />
-                <com.google.android.material.button.MaterialButton android:id="@+id/homeButton" style="@style/Widget.LCB.UtilityButton" android:text="主页" />
-                <com.google.android.material.button.MaterialButton android:id="@+id/backRemoteButton" style="@style/Widget.LCB.UtilityButton" android:text="返回" />
-                <com.google.android.material.button.MaterialButton android:id="@+id/menuButton" style="@style/Widget.LCB.UtilityButton" android:text="菜单" />
-                <com.google.android.material.button.MaterialButton android:id="@+id/settingsButton" style="@style/Widget.LCB.UtilityButton" android:text="设置" />
+                <com.google.android.material.button.MaterialButton android:id="@+id/muteButton" style="@style/Widget.LCB.UtilityButton" android:text="@string/remote_mute" />
+                <com.google.android.material.button.MaterialButton android:id="@+id/sourceButton" style="@style/Widget.LCB.UtilityButton" android:text="@string/remote_source" />
+                <com.google.android.material.button.MaterialButton android:id="@+id/homeButton" style="@style/Widget.LCB.UtilityButton" android:text="@string/remote_home" />
+                <com.google.android.material.button.MaterialButton android:id="@+id/backRemoteButton" style="@style/Widget.LCB.UtilityButton" android:text="@string/remote_back" />
+                <com.google.android.material.button.MaterialButton android:id="@+id/menuButton" style="@style/Widget.LCB.UtilityButton" android:text="@string/remote_menu" />
+                <com.google.android.material.button.MaterialButton android:id="@+id/settingsButton" style="@style/Widget.LCB.UtilityButton" android:text="@string/remote_settings" />
             </GridLayout>
         </LinearLayout>
     </ScrollView>

@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.lcb.app.R
 import com.example.lcb.app.databinding.ItemBrandRowBinding
 import com.example.lcb.app.remote.model.TvBrand
 import com.example.lcb.app.remote.ui.BrandVisuals
@@ -36,7 +37,7 @@ class BrandAdapter(
             val visual = BrandVisuals.forName(item.name)
             bindBrandLogo(binding.logoImage, binding.fallbackInitialText, item.name, visual.color)
             binding.nameText.text = item.name.brandDisplayName()
-            binding.countText.text = "${item.modelCount} 个型号"
+            binding.countText.text = binding.root.context.getString(R.string.brand_model_count_format, item.modelCount)
             binding.divider.visibility = if (isLast) View.GONE else View.VISIBLE
             binding.root.setOnClickListener { onClick(item) }
         }

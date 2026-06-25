@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@android:color/black">
 
-    <!-- 媒体内容（视频/图片容器） -->
+    <!-- Media content (video/image container) -->
     <FrameLayout
         android:id="@+id/fl_ad_media"
         android:layout_width="match_parent"
@@ -16,7 +16,7 @@
         android:background="@android:color/black"
         tools:ignore="UnknownIdInLayout" />
 
-    <!-- 底部信息区域 -->
+    <!-- Bottom information area -->
     <LinearLayout
         android:id="@+id/ll_bottom"
         android:layout_width="match_parent"
@@ -27,14 +27,14 @@
         android:paddingHorizontal="22dp"
         android:paddingVertical="16dp">
 
-        <!-- 顶部区域：图标和标题、描述 -->
+        <!-- Header: icon, title, and description -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
-            <!-- 应用图标 -->
+            <!-- App icon -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/iconCv"
                 android:layout_width="wrap_content"
@@ -51,7 +51,7 @@
                     android:src="@android:drawable/ic_menu_info_details" />
             </androidx.cardview.widget.CardView>
 
-            <!-- 标题与描述 -->
+            <!-- Title and description -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -67,7 +67,7 @@
                     android:textColor="@android:color/white"
                     android:textSize="16sp"
                     android:textStyle="bold"
-                    tools:text="TopOn 全屏原生广告标题" />
+                    tools:text="TopOn full-screen native ad title" />
 
                 <TextView
                     android:id="@+id/tv_ad_description"
@@ -78,11 +78,11 @@
                     android:maxLines="2"
                     android:textColor="#CCCCCC"
                     android:textSize="13sp"
-                    tools:text="TopOn 全屏原生广告描述信息" />
+                    tools:text="TopOn full-screen native ad description" />
             </LinearLayout>
         </LinearLayout>
 
-        <!-- CTA按钮 -->
+        <!-- CTA button -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="44dp"
@@ -96,7 +96,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="INSTALL"
+                android:text="@string/ad_install"
                 android:textColor="@android:color/white"
                 android:textSize="15sp"
                 android:textStyle="bold" />

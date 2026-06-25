@@ -215,3 +215,46 @@ Added a `noIrTip` row to `activity_remote_control.xml` below the toolbar divider
 
 ### Verification
 - ✅ Ran `./gradlew :app:assembleLocalDebug`. Build completed successfully.
+
+## 12. Chinese String Resource Internationalization
+
+Status: ✅ Completed
+
+### Subflow
+- ✅ Add `values-zh/strings.xml` for Simplified Chinese UI copy.
+- ✅ Keep `values/strings.xml` and `values-en/strings.xml` aligned as default/English fallbacks.
+- ✅ Move home, settings, brand list, model list, add-remote, remote error/tip, delete dialog, and ad fallback copy out of XML/Kotlin hardcoded text.
+- ✅ Keep remote-control professional button labels and symbols hardcoded where appropriate: `VOL`, `CH`, `OK`, direction arrows, `+`, and `−`.
+- ✅ Remove remaining Chinese comments and unused imports found during scan.
+
+### Implementation Summary
+Centralized user-facing copy into Android string resources and added a Chinese resource folder. XML pages now reference `@string/...`, Kotlin Toast/Dialog/default-field text uses `getString(...)`, adapters use formatted resources for counts/protocol labels, and ad renderer fallback labels are resource-backed. Runtime hardcoded XML text now only contains the allowed remote-control symbols/professional labels.
+
+### Verification
+- ✅ Ran Chinese residual scan outside `values-zh`; no Chinese hardcoded text remains in app source outside localized resources.
+- ✅ Ran runtime XML hardcoded text scan; remaining entries are only remote-control symbols/professional labels.
+- ✅ Ran `./gradlew :app:testLocalDebugUnitTest`. Unit tests passed.
+- ✅ Ran `./gradlew --stop` after a parallel Gradle cache conflict, then reran `./gradlew :app:assembleLocalDebug` sequentially. Build completed successfully.
+
+## 13. App Language Switching
+
+Status: ✅ Completed
+
+### Subflow
+- ✅ Replace the settings-page language `AlertDialog` with an independent `BottomSheetDialog`.
+- ✅ Add a rounded top sheet background, centered handle, and RecyclerView country/language list.
+- ✅ Centralize supported app languages in `AppLanguage`, with country code, country name, and language name resolved from the active locale.
+- ✅ Apply language changes through `AppCompatDelegate.setApplicationLocales(...)`, keeping the empty locale list as the follow-system option.
+- ✅ Expand `locales_config.xml` for system per-app language support.
+- ✅ Add complete string resources for selected mainstream/populous countries: United States, China, India, Spain, Saudi Arabia, Brazil, Bangladesh, Russia, Indonesia, Japan, Korea, Germany, France, Vietnam, and Turkey.
+- ✅ Verify every localized `strings.xml` contains the same resource keys as the default file.
+
+### Implementation Summary
+Added `LanguageBottomSheet`, `LanguageOptionAdapter`, and `AppLanguage` to decouple language selection from `SettingsFragment`. The settings page now opens a Material bottom sheet with a handle and selectable country rows; selecting a row immediately calls the AndroidX AppCompat locale API. Resource coverage now includes 15 country locale tags plus follow-system, and each locale has a full 71-key translation file.
+
+### Verification
+- ✅ Compared all 18 `strings.xml` files against the default resource file; no missing or extra keys.
+- ✅ Compared `AppLanguage.supportedLocaleTags` with `locales_config.xml`; no mismatches.
+- ✅ Ran runtime XML hardcoded text scan; remaining entries are only remote-control symbols/professional labels.
+- ✅ Ran `./gradlew :app:assembleLocalDebug`. Build completed successfully.
+- ✅ Ran `./gradlew :app:testLocalDebugUnitTest`. Unit tests passed.

@@ -22,7 +22,7 @@ class FlipperIrEncoder {
                 "RC5" -> encodeRc5(address, command, extended = false)
                 "RC5X" -> encodeRc5(address, command, extended = true)
                 "RC6" -> encodeRc6(address, command)
-                else -> error("暂不支持协议: $protocol")
+                else -> error("Unsupported IR protocol: $protocol")
             }
         }
     }

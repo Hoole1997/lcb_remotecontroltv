@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         >
 
-        <!-- 应用图标 -->
+        <!-- App icon -->
         <androidx.cardview.widget.CardView
             android:id="@+id/iconCv"
             android:layout_width="wrap_content"
@@ -35,7 +35,7 @@
                 android:src="@android:drawable/ic_menu_info_details" />
         </androidx.cardview.widget.CardView>
 
-        <!-- 广告内容区域 -->
+        <!-- Ad content area -->
         <LinearLayout
             android:id="@+id/contentLL"
             android:layout_width="0dp"
@@ -48,7 +48,7 @@
             app:layout_constraintStart_toEndOf="@id/iconCv"
             app:layout_constraintTop_toTopOf="parent">
 
-            <!-- 广告标题 -->
+            <!-- Ad title -->
             <TextView
                 android:id="@+id/tv_ad_title"
                 android:layout_width="match_parent"
@@ -56,11 +56,11 @@
                 android:ellipsize="end"
                 android:fontFamily="sans-serif-light"
                 android:maxLines="1"
-                android:text="Test TopOn Ads"
+                android:text="@string/ad_test_topon"
                 android:textColor="#333333"
                 android:textSize="14sp" />
 
-            <!-- 广告描述 -->
+            <!-- Ad description -->
             <TextView
                 android:id="@+id/tv_ad_description"
                 android:layout_width="match_parent"
@@ -69,13 +69,13 @@
                 android:ellipsize="end"
                 android:fontFamily="sans-serif-light"
                 android:maxLines="1"
-                android:text="desc"
+                android:text="@string/ad_test_desc"
                 android:textColor="#666666"
                 android:textSize="12sp" />
 
         </LinearLayout>
 
-        <!-- CTA按钮 -->
+        <!-- CTA button -->
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/btn_ad_cta"
             android:layout_width="wrap_content"
@@ -85,7 +85,7 @@
             android:gravity="center"
             android:paddingHorizontal="12dp"
             android:singleLine="true"
-            android:text="INSTALL"
+            android:text="@string/ad_install"
             android:textColor="#FFFFFF"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -101,4 +101,3 @@
         android:layout_gravity="top|start"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>
-

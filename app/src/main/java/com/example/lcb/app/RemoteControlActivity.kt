@@ -36,7 +36,7 @@ class RemoteControlActivity : AppCompatActivity() {
 
         val savedTv = loadSavedTv()
         if (savedTv == null) {
-            Toast.makeText(this, "未找到已添加电视", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.remote_no_saved_tv, Toast.LENGTH_SHORT).show()
             finish()
             return
         }
@@ -44,7 +44,7 @@ class RemoteControlActivity : AppCompatActivity() {
         val remoteRepository = AssetTvRemoteRepository(this)
         val loadedProfile = remoteRepository.getProfile(savedTv.assetPath)
         if (loadedProfile == null) {
-            Toast.makeText(this, "遥控码文件读取失败", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.remote_code_read_failed, Toast.LENGTH_SHORT).show()
             finish()
             return
         }
@@ -83,12 +83,12 @@ class RemoteControlActivity : AppCompatActivity() {
 
     private fun confirmDelete(savedTv: SavedTv) {
         AlertDialog.Builder(this)
-            .setTitle("删除设备")
-            .setMessage("确定要删除「${savedTv.displayName}」吗？")
-            .setNegativeButton("取消", null)
-            .setPositiveButton("删除") { _, _ ->
+            .setTitle(R.string.delete_device)
+            .setMessage(getString(R.string.delete_device_message_format, savedTv.displayName))
+            .setNegativeButton(R.string.cancel, null)
+            .setPositiveButton(R.string.delete) { _, _ ->
                 SharedPreferencesSavedTvRepository(this).delete(savedTv.id)
-                Toast.makeText(this, "已删除", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.deleted, Toast.LENGTH_SHORT).show()
                 finish()
             }
             .show()
@@ -138,10 +138,10 @@ class RemoteControlActivity : AppCompatActivity() {
     private fun IrSendResult.message(): String? {
         return when (this) {
             IrSendResult.Sent -> null
-            IrSendResult.NoEmitter -> "当前设备没有红外发射器"
-            IrSendResult.MissingPermission -> "缺少红外发送权限 TRANSMIT_IR"
+            IrSendResult.NoEmitter -> getString(R.string.ir_no_emitter)
+            IrSendResult.MissingPermission -> getString(R.string.ir_missing_permission)
             is IrSendResult.Unsupported -> null
-            is IrSendResult.Failed -> "发送失败: ${error.message.orEmpty()}"
+            is IrSendResult.Failed -> getString(R.string.ir_send_failed_format, error.message.orEmpty())
         }
     }
 

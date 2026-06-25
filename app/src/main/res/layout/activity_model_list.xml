@@ -23,7 +23,7 @@
             android:background="@color/remote_background"
             app:navigationIcon="@drawable/ic_remote_back"
             app:navigationIconTint="@color/remote_on_surface"
-            app:title="选择型号"
+            app:title="@string/select_model"
             app:titleTextAppearance="@style/TextAppearance.Material3.TitleMedium"
             app:titleTextColor="@color/remote_on_surface" />
     </com.google.android.material.appbar.AppBarLayout>
@@ -105,7 +105,7 @@
                         android:layout_marginTop="2dp"
                         android:textColor="@color/remote_text_secondary"
                         android:textSize="12sp"
-                        tools:text="12 个可用遥控码" />
+                        tools:text="12 available remote codes" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -136,7 +136,7 @@
                     android:layout_marginStart="10dp"
                     android:layout_weight="1"
                     android:background="@android:color/transparent"
-                    android:hint="搜索型号或遥控码"
+                    android:hint="@string/search_model_or_remote"
                     android:inputType="text"
                     android:singleLine="true"
                     android:textColor="@color/remote_on_surface"
@@ -166,7 +166,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/bg_remote_button_primary"
-        android:text="添加此遥控器"
+        android:text="@string/add_this_remote"
         android:textColor="@android:color/white"
         android:textSize="16sp"
         app:backgroundTint="@null" />

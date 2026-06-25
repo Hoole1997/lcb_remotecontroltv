@@ -23,7 +23,7 @@
             android:background="@color/remote_background"
             app:navigationIcon="@drawable/ic_remote_back"
             app:navigationIconTint="@color/remote_on_surface"
-            app:title="选择品牌"
+            app:title="@string/select_brand"
             app:titleTextAppearance="@style/TextAppearance.Material3.TitleMedium"
             app:titleTextColor="@color/remote_on_surface" />
     </com.google.android.material.appbar.AppBarLayout>
@@ -71,7 +71,7 @@
                     android:layout_marginStart="10dp"
                     android:layout_weight="1"
                     android:background="@android:color/transparent"
-                    android:hint="搜索电视品牌"
+                    android:hint="@string/search_tv_brand"
                     android:inputType="text"
                     android:singleLine="true"
                     android:textColor="@color/remote_on_surface"
@@ -85,7 +85,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="20dp"
-                android:text="常用品牌"
+                android:text="@string/common_brands"
                 android:textColor="@color/remote_on_surface"
                 android:textSize="14sp"
                 android:textStyle="bold" />
@@ -110,7 +110,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="22dp"
-                android:text="全部品牌"
+                android:text="@string/all_brands"
                 android:textColor="@color/remote_on_surface"
                 android:textSize="14sp"
                 android:textStyle="bold" />

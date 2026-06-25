@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="18dp"
-        android:text="添加遥控器"
+        android:text="@string/add_remote"
         android:textColor="@color/remote_on_surface"
         android:textSize="18sp"
         android:textStyle="bold" />
@@ -40,7 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="22dp"
-        android:text="设备名称"
+        android:text="@string/device_name"
         android:textColor="@color/remote_on_surface"
         android:textSize="13sp" />
 
@@ -50,7 +50,7 @@
         android:layout_height="48dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/bg_remote_search"
-        android:hint="设备名称"
+        android:hint="@string/device_name"
         android:inputType="text"
         android:paddingStart="14dp"
         android:paddingEnd="14dp"
@@ -63,7 +63,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="场景备注"
+        android:text="@string/scene_note"
         android:textColor="@color/remote_on_surface"
         android:textSize="13sp" />
 
@@ -73,7 +73,7 @@
         android:layout_height="48dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/bg_remote_search"
-        android:hint="例如 客厅 / 卧室 / 公司"
+        android:hint="@string/scene_hint"
         android:inputType="text"
         android:paddingStart="14dp"
         android:paddingEnd="14dp"
@@ -88,7 +88,7 @@
         android:layout_height="52dp"
         android:layout_marginTop="28dp"
         android:background="@drawable/bg_remote_button_primary"
-        android:text="保存"
+        android:text="@string/save"
         android:textColor="@android:color/white"
         android:textSize="16sp"
         app:backgroundTint="@null" />

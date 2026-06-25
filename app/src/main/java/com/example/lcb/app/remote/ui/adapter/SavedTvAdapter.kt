@@ -48,7 +48,7 @@ class SavedTvAdapter(
                 binding.deviceIcon.imageTintList = ColorStateList.valueOf(secondary)
             }
             binding.deviceNameText.text = item.displayName
-            binding.modelText.text = "${item.brand.brandDisplayName()} TV"
+            binding.modelText.text = context.getString(R.string.brand_tv_format, item.brand.brandDisplayName())
             binding.sceneChip.text = item.scene
             binding.sceneChip.setTextColor(secondary)
             binding.root.setOnClickListener { onClick(item) }

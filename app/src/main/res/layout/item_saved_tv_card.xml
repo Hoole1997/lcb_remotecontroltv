@@ -60,7 +60,7 @@
             app:layout_constraintStart_toEndOf="@id/deviceIconContainer"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed"
-            tools:text="客厅电视" />
+            tools:text="Living room TV" />
 
         <LinearLayout
             android:id="@+id/metaRow"
@@ -102,7 +102,7 @@
                 android:textColor="@color/remote_primary"
                 android:textSize="12sp"
                 android:textStyle="bold"
-                tools:text="客厅" />
+                tools:text="@string/default_scene" />
         </LinearLayout>
 
         <ImageView

@@ -6,7 +6,7 @@
 
     <corners android:radius="8dp" />
 
-    <!-- 确保没有边框 -->
+    <!-- No border -->
     <stroke
         android:width="0dp"
         android:color="#00000000" />

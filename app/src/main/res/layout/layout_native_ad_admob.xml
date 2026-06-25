@@ -12,7 +12,7 @@
         android:background="@drawable/bg_native_ad_card"
         android:paddingHorizontal="12dp">
 
-        <!-- 应用图标 -->
+        <!-- App icon -->
         <androidx.cardview.widget.CardView
             android:id="@+id/iconCv"
             android:layout_width="wrap_content"
@@ -32,7 +32,7 @@
                 android:src="@android:drawable/ic_menu_info_details" />
         </androidx.cardview.widget.CardView>
 
-        <!-- 广告内容区域 -->
+        <!-- Ad content area -->
         <LinearLayout
             android:id="@+id/contentLL"
             android:layout_width="0dp"
@@ -45,7 +45,7 @@
             app:layout_constraintStart_toEndOf="@id/iconCv"
             app:layout_constraintTop_toTopOf="parent">
 
-            <!-- 广告标题 -->
+            <!-- Ad title -->
             <TextView
                 android:id="@+id/tv_ad_title"
                 android:layout_width="match_parent"
@@ -53,7 +53,7 @@
                 android:ellipsize="end"
                 android:fontFamily="sans-serif-light"
                 android:maxLines="1"
-                android:text="Test Google Ads"
+                android:text="@string/ad_test_google"
                 android:textColor="#333333"
                 android:textSize="14sp" />
 
@@ -64,13 +64,13 @@
                 android:layout_marginTop="10dp"
                 android:ellipsize="end"
                 android:maxLines="1"
-                tools:text="广告描述广告描述广告描述广告描述广告描述广告描述广告描述广告描述广告描述广告描述广告描述广告描述广告描述广告描述广告描述广告描述广告描述广告描述广告描述广告描述广告描述广告描述广告描述"
+                tools:text="Ad description Ad description Ad description Ad description"
                 android:textColor="#999999"
                 android:textSize="12sp" />
 
         </LinearLayout>
 
-        <!-- CTA按钮 -->
+        <!-- CTA button -->
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/btn_ad_cta"
             android:layout_width="wrap_content"
@@ -80,7 +80,7 @@
             android:gravity="center"
             android:paddingHorizontal="12dp"
             android:singleLine="true"
-            android:text="INSTALL"
+            android:text="@string/ad_install"
             android:textColor="#FFFFFF"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -90,7 +90,7 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <!-- AD 标签 -->
+    <!-- AD label -->
     <com.android.common.bill.ui.view.AdLabelView
         android:id="@+id/tv_ad_label"
         android:layout_width="wrap_content"

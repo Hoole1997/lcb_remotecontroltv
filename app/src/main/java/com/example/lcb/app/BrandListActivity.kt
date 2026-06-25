@@ -72,7 +72,7 @@ class BrandListActivity : AppCompatActivity() {
     private fun showAddDialog(profile: TvRemoteProfile) {
         AddRemoteSheet.show(this, profile) { savedTv ->
             savedTvRepository.add(savedTv)
-            Toast.makeText(this, "已添加 ${savedTv.displayName}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.added_tv_toast_format, savedTv.displayName), Toast.LENGTH_SHORT).show()
             startActivity(RemoteControlActivity.createIntent(this, savedTv.id))
             finish()
         }

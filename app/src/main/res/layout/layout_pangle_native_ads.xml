@@ -15,7 +15,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- 应用图标 -->
+        <!-- App icon -->
         <androidx.cardview.widget.CardView
             android:id="@+id/iconCv"
             android:layout_width="wrap_content"
@@ -34,7 +34,7 @@
                 android:src="@android:drawable/ic_menu_info_details" />
         </androidx.cardview.widget.CardView>
 
-        <!-- 广告内容区域 -->
+        <!-- Ad content area -->
         <LinearLayout
             android:id="@+id/contentLL"
             android:layout_width="0dp"
@@ -47,7 +47,7 @@
             app:layout_constraintStart_toEndOf="@id/iconCv"
             app:layout_constraintTop_toTopOf="parent">
 
-            <!-- 广告标题 -->
+            <!-- Ad title -->
             <TextView
                 android:id="@+id/tv_ad_title"
                 android:layout_width="match_parent"
@@ -55,11 +55,11 @@
                 android:ellipsize="end"
                 android:fontFamily="sans-serif-light"
                 android:maxLines="1"
-                android:text="Test Pangle Ads"
+                android:text="@string/ad_test_pangle"
                 android:textColor="#333333"
                 android:textSize="14sp" />
 
-            <!-- 广告描述（可选，如果需要显示描述） -->
+            <!-- Ad description (optional) -->
             <TextView
                 android:id="@+id/tv_ad_description"
                 android:layout_width="match_parent"
@@ -67,12 +67,12 @@
                 android:layout_marginTop="5dp"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:text="Test Pangle desc"
+                android:text="@string/ad_test_pangle_desc"
                 android:textColor="#666666"
                 android:textSize="12sp" />
         </LinearLayout>
 
-        <!-- CTA按钮 -->
+        <!-- CTA button -->
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/btn_ad_cta"
             android:layout_width="wrap_content"
@@ -82,7 +82,7 @@
             android:gravity="center"
             android:paddingHorizontal="12dp"
             android:singleLine="true"
-            android:text="INSTALL"
+            android:text="@string/ad_install"
             android:textColor="#FFFFFF"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -90,7 +90,7 @@
             app:layout_constraintStart_toEndOf="@id/contentLL"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- 顶部广告Logo容器 -->
+        <!-- Top ad logo container -->
         <FrameLayout
             app:layout_constraintBottom_toBottomOf="@id/iconCv"
             app:layout_constraintStart_toStartOf="@id/iconCv"
@@ -108,4 +108,3 @@
         android:layout_gravity="top|start"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>
-

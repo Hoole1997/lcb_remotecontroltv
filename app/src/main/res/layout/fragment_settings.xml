@@ -14,7 +14,7 @@
         android:layout_height="@dimen/remote_top_bar_height"
         android:gravity="center_vertical"
         android:layout_marginStart="24dp"
-        android:text="设置"
+        android:text="@string/settings_title"
         android:textColor="@color/remote_on_surface"
         android:textAppearance="@style/TextAppearance_LCB_HomeToolbarTitle"
         app:layout_constraintStart_toStartOf="parent"
@@ -94,7 +94,7 @@
                 android:layout_marginTop="14dp"
                 android:layout_marginBottom="6dp"
                 android:letterSpacing="0.04"
-                android:text="通用"
+                android:text="@string/settings_general"
                 android:textColor="@color/remote_text_secondary"
                 android:textSize="12sp"
                 android:textStyle="bold" />
@@ -114,7 +114,7 @@
 
                 <TextView
                     style="@style/Widget.LCB.SettingsRow.Title"
-                    android:text="意见反馈" />
+                    android:text="@string/settings_feedback" />
 
                 <ImageView style="@style/Widget.LCB.SettingsRow.Chevron" />
             </LinearLayout>
@@ -131,7 +131,7 @@
 
                 <TextView
                     style="@style/Widget.LCB.SettingsRow.Title"
-                    android:text="语言" />
+                    android:text="@string/settings_language" />
 
                 <TextView
                     android:id="@+id/languageValue"
@@ -140,7 +140,7 @@
                     android:layout_marginEnd="6dp"
                     android:textColor="@color/remote_text_secondary"
                     android:textSize="14sp"
-                    tools:text="跟随系统" />
+                    tools:text="Follow system" />
 
                 <ImageView style="@style/Widget.LCB.SettingsRow.Chevron" />
             </LinearLayout>
@@ -157,7 +157,7 @@
 
                 <TextView
                     style="@style/Widget.LCB.SettingsRow.Title"
-                    android:text="隐私协议" />
+                    android:text="@string/settings_privacy" />
 
                 <ImageView style="@style/Widget.LCB.SettingsRow.Chevron" />
             </LinearLayout>

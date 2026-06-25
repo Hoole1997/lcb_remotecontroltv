@@ -48,24 +48,24 @@ sealed class IrSignal {
     ) : IrSignal()
 }
 
-enum class RemoteAction(val label: String) {
-    POWER("Power"),
-    UP("Up"),
-    DOWN("Down"),
-    LEFT("Left"),
-    RIGHT("Right"),
-    OK("OK"),
-    VOLUME_UP("VOL +"),
-    VOLUME_DOWN("VOL -"),
-    CHANNEL_UP("CH +"),
-    CHANNEL_DOWN("CH -"),
-    MUTE("Mute"),
-    SOURCE("Source"),
-    HOME("Home"),
-    BACK("Back"),
-    MENU("Menu"),
-    SETTINGS("Settings"),
-    INFO("Info");
+enum class RemoteAction {
+    POWER,
+    UP,
+    DOWN,
+    LEFT,
+    RIGHT,
+    OK,
+    VOLUME_UP,
+    VOLUME_DOWN,
+    CHANNEL_UP,
+    CHANNEL_DOWN,
+    MUTE,
+    SOURCE,
+    HOME,
+    BACK,
+    MENU,
+    SETTINGS,
+    INFO;
 
     companion object {
         fun fromIrName(name: String): RemoteAction? {

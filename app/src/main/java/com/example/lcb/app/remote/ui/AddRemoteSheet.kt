@@ -1,7 +1,7 @@
 package com.example.lcb.app.remote.ui
 
-import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
+import com.example.lcb.app.R
 import com.example.lcb.app.databinding.SheetAddRemoteBinding
 import com.example.lcb.app.remote.model.SavedTv
 import com.example.lcb.app.remote.model.TvRemoteProfile
@@ -23,12 +23,16 @@ object AddRemoteSheet {
 
         binding.sheetSubtitle.text =
             "${profile.brand.brandDisplayName()} · ${profile.displayName}"
-        binding.nameInput.setText("${profile.brand.brandDisplayName()} 电视")
-        binding.sceneInput.setText("客厅")
+        binding.nameInput.setText(
+            activity.getString(R.string.default_device_name_format, profile.brand.brandDisplayName())
+        )
+        binding.sceneInput.setText(activity.getString(R.string.default_scene))
 
         binding.saveButton.setOnClickListener {
-            val scene = binding.sceneInput.text?.toString()?.trim().orEmpty().ifBlank { "客厅" }
-            val name = binding.nameInput.text?.toString()?.trim().orEmpty().ifBlank { "$scene 电视" }
+            val scene = binding.sceneInput.text?.toString()?.trim().orEmpty()
+                .ifBlank { activity.getString(R.string.default_scene) }
+            val name = binding.nameInput.text?.toString()?.trim().orEmpty()
+                .ifBlank { activity.getString(R.string.default_scene_device_name_format, scene) }
             onSaved(
                 SavedTv(
                     id = UUID.randomUUID().toString(),
