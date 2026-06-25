@@ -5,17 +5,17 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.lcb.app.databinding.ActivityModelListBinding
 import com.example.lcb.app.remote.data.AssetTvRemoteRepository
 import com.example.lcb.app.remote.data.SharedPreferencesSavedTvRepository
 import com.example.lcb.app.remote.model.TvBrand
 import com.example.lcb.app.remote.model.TvRemoteProfile
-import com.example.lcb.app.remote.ui.AddRemoteDialog
+import com.example.lcb.app.remote.ui.AddRemoteSheet
 import com.example.lcb.app.remote.ui.BrandVisuals
 import com.example.lcb.app.remote.ui.adapter.ModelAdapter
 import com.example.lcb.app.remote.ui.applySystemBarInsets
@@ -48,8 +48,14 @@ class ModelListActivity : AppCompatActivity() {
         binding.modelRecycler.adapter = modelAdapter
 
         bindBrandHeader()
-        binding.backButton.setOnClickListener { finish() }
+        binding.toolbar.setNavigationOnClickListener { finish() }
         binding.searchEditText.addTextChangedListener(searchWatcher())
+        binding.contentScroll.setOnScrollChangeListener { _, _, _, _, _ ->
+            if (binding.searchEditText.isFocused) {
+                binding.searchEditText.clearFocus()
+                hideKeyboard()
+            }
+        }
         binding.addButton.setOnClickListener {
             modelAdapter.selectedProfile()?.let(::showAddDialog)
         }
@@ -60,14 +66,18 @@ class ModelListActivity : AppCompatActivity() {
     private fun bindBrandHeader() {
         val visual = BrandVisuals.forName(brand.name)
         binding.brandLetterText.text = brand.name.brandInitial()
-        binding.brandLetterText.backgroundTintList = android.content.res.ColorStateList.valueOf(visual.color)
+        binding.brandLetterText.setTextColor(visual.color)
         binding.brandNameText.text = brand.name.brandDisplayName()
         binding.brandCountText.text = "${brand.modelCount} 个可用遥控码"
-        binding.addButton.backgroundTintList = ContextCompat.getColorStateList(this, R.color.remote_primary)
+    }
+
+    private fun hideKeyboard() {
+        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(binding.searchEditText.windowToken, 0)
     }
 
     private fun showAddDialog(profile: TvRemoteProfile) {
-        AddRemoteDialog.show(this, profile) { savedTv ->
+        AddRemoteSheet.show(this, profile) { savedTv ->
             savedTvRepository.add(savedTv)
             Toast.makeText(this, "已添加 ${savedTv.displayName}", Toast.LENGTH_SHORT).show()
             startActivity(RemoteControlActivity.createIntent(this, savedTv.id))
