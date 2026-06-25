@@ -5,12 +5,12 @@
     android:id="@+id/card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="14dp"
+    android:layout_marginBottom="12dp"
     android:clickable="true"
     android:focusable="true"
     app:cardBackgroundColor="@color/remote_surface"
     app:cardCornerRadius="@dimen/remote_corner_18"
-    app:cardElevation="1dp"
+    app:cardElevation="0dp"
     app:rippleColor="@color/remote_soft_teal"
     app:strokeColor="@color/remote_outline"
     app:strokeWidth="1dp">
@@ -35,8 +35,8 @@
 
             <ImageView
                 android:id="@+id/deviceIcon"
-                android:layout_width="28dp"
-                android:layout_height="28dp"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
                 android:layout_gravity="center"
                 android:contentDescription="@null"
                 android:src="@drawable/ic_remote_tv" />
@@ -47,14 +47,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="14dp"
-            android:layout_marginEnd="12dp"
+            android:layout_marginEnd="10dp"
             android:ellipsize="end"
             android:maxLines="1"
             android:textColor="@color/remote_on_surface"
-            android:textSize="18sp"
+            android:textSize="17sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@id/modelText"
-            app:layout_constraintEnd_toStartOf="@id/rightCluster"
+            app:layout_constraintEnd_toStartOf="@id/chevronIcon"
             app:layout_constraintStart_toEndOf="@id/deviceIconContainer"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed"
@@ -64,26 +64,32 @@
             android:id="@+id/modelText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
             android:layout_marginTop="3dp"
+            android:layout_marginEnd="10dp"
             android:ellipsize="end"
             android:maxLines="1"
             android:textColor="@color/remote_text_secondary"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/deviceNameText"
-            app:layout_constraintStart_toStartOf="@id/deviceNameText"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toTopOf="@id/metaRow"
+            app:layout_constraintEnd_toStartOf="@id/chevronIcon"
+            app:layout_constraintStart_toEndOf="@id/deviceIconContainer"
             app:layout_constraintTop_toBottomOf="@id/deviceNameText"
-            tools:text="Samsung TV" />
+            tools:text="Xiaomi TV" />
 
         <LinearLayout
-            android:id="@+id/rightCluster"
-            android:layout_width="wrap_content"
+            android:id="@+id/metaRow"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:gravity="end"
-            android:orientation="vertical"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/chevronIcon"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintStart_toEndOf="@id/deviceIconContainer"
+            app:layout_constraintTop_toBottomOf="@id/modelText">
 
             <TextView
                 android:id="@+id/sceneChip"
@@ -91,43 +97,37 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_remote_chip"
                 android:gravity="center"
-                android:minWidth="48dp"
-                android:paddingStart="12dp"
-                android:paddingTop="5dp"
-                android:paddingEnd="12dp"
-                android:paddingBottom="5dp"
-                android:textColor="@color/remote_on_surface"
-                android:textSize="13sp"
+                android:paddingStart="10dp"
+                android:paddingTop="3dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="3dp"
+                android:textColor="@color/remote_primary"
+                android:textSize="12sp"
+                android:textStyle="bold"
                 tools:text="客厅" />
 
-            <LinearLayout
+            <View
+                android:layout_width="4dp"
+                android:layout_height="4dp"
+                android:layout_marginStart="12dp"
+                android:background="@drawable/bg_status_dot" />
+
+            <TextView
+                android:id="@+id/readyText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <View
-                    android:layout_width="8dp"
-                    android:layout_height="8dp"
-                    android:background="@drawable/bg_status_dot" />
-
-                <TextView
-                    android:id="@+id/readyText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="6dp"
-                    android:text="IR Ready"
-                    android:textColor="@color/remote_status_green"
-                    android:textSize="13sp" />
-            </LinearLayout>
+                android:layout_marginStart="6dp"
+                android:text="IR Ready"
+                android:textColor="@color/remote_status_ready"
+                android:textSize="12sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <ImageView
             android:id="@+id/chevronIcon"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginStart="10dp"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_marginStart="8dp"
             android:contentDescription="@null"
             android:src="@drawable/ic_remote_chevron"
             app:layout_constraintBottom_toBottomOf="parent"

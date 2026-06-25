@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        applySystemBarInsets(binding.main)
+        applySystemBarInsets(binding.main, binding.bottomNavigation)
 
         savedTvRepository = SharedPreferencesSavedTvRepository(this)
         savedTvAdapter = SavedTvAdapter { tv ->
@@ -42,7 +42,14 @@ class MainActivity : AppCompatActivity() {
         }
         binding.bottomNavigation.selectedItemId = R.id.remote_nav_tv
         binding.bottomNavigation.setOnItemSelectedListener { item ->
-            item.itemId == R.id.remote_nav_tv
+            when (item.itemId) {
+                R.id.remote_nav_tv -> true
+                R.id.remote_nav_settings -> {
+                    startActivity(Intent(this, SettingsActivity::class.java))
+                    false
+                }
+                else -> false
+            }
         }
         binding.emptyAddButton.setOnClickListener { openBrandList() }
         binding.homeFloatingAdd.setOnClickListener { openBrandList() }
