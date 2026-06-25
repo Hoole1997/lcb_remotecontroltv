@@ -52,14 +52,13 @@ class RemoteControlActivity : AppCompatActivity() {
     }
 
     private fun bindHeader(savedTv: SavedTv) {
-        binding.titleText.text = savedTv.displayName
-        binding.subtitleText.text = savedTv.modelName
-        binding.irStatusText.text = if (transmitter.hasEmitter()) "IR Ready" else "当前设备未检测到红外发射器"
-        binding.backButton.setOnClickListener { finish() }
+        binding.toolbar.title = savedTv.displayName
+        binding.toolbar.subtitle = savedTv.modelName
+        binding.toolbar.setNavigationOnClickListener { finish() }
     }
 
     private fun bindButtons() {
-        binding.powerButton.setOnClickListener { send(RemoteAction.POWER) }
+        binding.powerButton.bindAction(RemoteAction.POWER)
         binding.upButton.bindAction(RemoteAction.UP)
         binding.downButton.bindAction(RemoteAction.DOWN)
         binding.leftButton.bindAction(RemoteAction.LEFT)
@@ -68,13 +67,13 @@ class RemoteControlActivity : AppCompatActivity() {
 
         val volume = ViewRemoteVerticalControlBinding.bind(binding.volumeControl.root)
         volume.labelText.text = "VOL"
-        volume.plusButton.setOnClickListener { send(RemoteAction.VOLUME_UP) }
-        volume.minusButton.setOnClickListener { send(RemoteAction.VOLUME_DOWN) }
+        volume.plusButton.bindAction(RemoteAction.VOLUME_UP)
+        volume.minusButton.bindAction(RemoteAction.VOLUME_DOWN)
 
         val channel = ViewRemoteVerticalControlBinding.bind(binding.channelControl.root)
         channel.labelText.text = "CH"
-        channel.plusButton.setOnClickListener { send(RemoteAction.CHANNEL_UP) }
-        channel.minusButton.setOnClickListener { send(RemoteAction.CHANNEL_DOWN) }
+        channel.plusButton.bindAction(RemoteAction.CHANNEL_UP)
+        channel.minusButton.bindAction(RemoteAction.CHANNEL_DOWN)
 
         binding.muteButton.bindAction(RemoteAction.MUTE)
         binding.sourceButton.bindAction(RemoteAction.SOURCE)
@@ -85,19 +84,15 @@ class RemoteControlActivity : AppCompatActivity() {
     }
 
     private fun com.google.android.material.button.MaterialButton.bindAction(action: RemoteAction) {
-        isEnabled = profile.supportedActions.containsKey(action)
-        alpha = if (isEnabled) 1f else 0.36f
+        val supported = profile.supportedActions.containsKey(action)
+        isEnabled = supported
+        alpha = if (supported) 1f else 0.4f
         setOnClickListener { send(action) }
     }
 
     private fun send(action: RemoteAction) {
-        val command = profile.supportedActions[action]
-        val result = if (command == null) {
-            IrSendResult.Unsupported("当前遥控码没有 ${action.label} 按键")
-        } else {
-            transmitter.send(command)
-        }
-        result.message()?.let { message ->
+        val command = profile.supportedActions[action] ?: return
+        transmitter.send(command).message()?.let { message ->
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
         }
     }
@@ -107,7 +102,7 @@ class RemoteControlActivity : AppCompatActivity() {
             IrSendResult.Sent -> null
             IrSendResult.NoEmitter -> "当前设备没有红外发射器"
             IrSendResult.MissingPermission -> "缺少红外发送权限 TRANSMIT_IR"
-            is IrSendResult.Unsupported -> reason
+            is IrSendResult.Unsupported -> null
             is IrSendResult.Failed -> "发送失败: ${error.message.orEmpty()}"
         }
     }

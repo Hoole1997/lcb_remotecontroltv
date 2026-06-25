@@ -6,158 +6,124 @@
     android:layout_height="match_parent"
     android:background="@color/remote_background">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/topBar"
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
         android:layout_width="0dp"
-        android:layout_height="94dp"
+        android:layout_height="?attr/actionBarSize"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_remote_back"
+        app:navigationIconTint="@color/remote_on_surface"
+        app:subtitleTextColor="@color/remote_text_secondary"
+        app:titleTextColor="@color/remote_on_surface" />
 
-        <ImageButton
-            android:id="@+id/backButton"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            android:layout_marginStart="14dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="返回"
-            android:padding="12dp"
-            android:src="@drawable/ic_remote_back"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.62" />
-
-        <TextView
-            android:id="@+id/titleText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="18dp"
-            android:layout_marginEnd="24dp"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:textColor="@color/remote_on_surface"
-            android:textSize="26sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@id/subtitleText"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/backButton"
-            app:layout_constraintTop_toTopOf="@id/backButton"
-            app:layout_constraintVertical_chainStyle="packed" />
-
-        <TextView
-            android:id="@+id/subtitleText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:textColor="@color/remote_text_secondary"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="@id/backButton"
-            app:layout_constraintEnd_toEndOf="@id/titleText"
-            app:layout_constraintStart_toStartOf="@id/titleText"
-            app:layout_constraintTop_toBottomOf="@id/titleText" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <TextView
-        android:id="@+id/irStatusText"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_marginTop="4dp"
-        android:background="@drawable/bg_remote_chip_selected"
-        android:gravity="center"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        android:text="IR Ready"
-        android:textColor="@color/remote_primary"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/topBar" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/powerButton"
-        android:layout_width="96dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="18dp"
-        android:insetTop="0dp"
-        android:insetBottom="0dp"
-        android:text="Power"
-        android:textColor="@android:color/white"
-        app:backgroundTint="@color/remote_orange"
-        app:cornerRadius="14dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/irStatusText" />
-
-    <GridLayout
-        android:id="@+id/dpadGrid"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
-        android:columnCount="3"
-        android:rowCount="3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/powerButton">
-
-        <Space android:layout_width="62dp" android:layout_height="62dp" />
-        <com.google.android.material.button.MaterialButton android:id="@+id/upButton" style="@style/Widget.LCB.RemoteButton" android:layout_margin="2dp" android:text="▲" />
-        <Space android:layout_width="62dp" android:layout_height="62dp" />
-        <com.google.android.material.button.MaterialButton android:id="@+id/leftButton" style="@style/Widget.LCB.RemoteButton" android:layout_margin="2dp" android:text="◀" />
-        <com.google.android.material.button.MaterialButton android:id="@+id/okButton" style="@style/Widget.LCB.RemoteButton.Primary" android:layout_margin="2dp" android:text="OK" />
-        <com.google.android.material.button.MaterialButton android:id="@+id/rightButton" style="@style/Widget.LCB.RemoteButton" android:layout_margin="2dp" android:text="▶" />
-        <Space android:layout_width="62dp" android:layout_height="62dp" />
-        <com.google.android.material.button.MaterialButton android:id="@+id/downButton" style="@style/Widget.LCB.RemoteButton" android:layout_margin="2dp" android:text="▼" />
-        <Space android:layout_width="62dp" android:layout_height="62dp" />
-    </GridLayout>
-
-    <LinearLayout
-        android:id="@+id/volumeChannelRow"
+    <View
+        android:id="@+id/toolbarDivider"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="40dp"
-        android:gravity="center"
-        android:orientation="horizontal"
+        android:layout_height="1dp"
+        android:background="@color/remote_outline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/dpadGrid">
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
-        <include
-            android:id="@+id/volumeControl"
-            layout="@layout/view_remote_vertical_control"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:layout_weight="1" />
-
-        <include
-            android:id="@+id/channelControl"
-            layout="@layout/view_remote_vertical_control"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_weight="1" />
-    </LinearLayout>
-
-    <GridLayout
-        android:id="@+id/utilityGrid"
+    <ScrollView
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="19dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="19dp"
-        android:columnCount="3"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:overScrollMode="never"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/volumeChannelRow">
+        app:layout_constraintTop_toBottomOf="@id/toolbarDivider">
 
-        <com.google.android.material.button.MaterialButton android:id="@+id/muteButton" style="@style/Widget.LCB.UtilityButton" android:text="Mute" />
-        <com.google.android.material.button.MaterialButton android:id="@+id/sourceButton" style="@style/Widget.LCB.UtilityButton" android:text="Source" />
-        <com.google.android.material.button.MaterialButton android:id="@+id/homeButton" style="@style/Widget.LCB.UtilityButton" android:text="Home" />
-        <com.google.android.material.button.MaterialButton android:id="@+id/backRemoteButton" style="@style/Widget.LCB.UtilityButton" android:text="Back" />
-        <com.google.android.material.button.MaterialButton android:id="@+id/menuButton" style="@style/Widget.LCB.UtilityButton" android:text="Menu" />
-        <com.google.android.material.button.MaterialButton android:id="@+id/settingsButton" style="@style/Widget.LCB.UtilityButton" android:text="Settings" />
-    </GridLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingStart="24dp"
+            android:paddingTop="20dp"
+            android:paddingEnd="24dp"
+            android:paddingBottom="28dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/powerButton"
+                android:layout_width="wrap_content"
+                android:layout_height="46dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:minWidth="120dp"
+                android:paddingStart="24dp"
+                android:paddingEnd="24dp"
+                android:text="电源"
+                android:textColor="@android:color/white"
+                app:backgroundTint="@color/remote_orange"
+                app:cornerRadius="14dp"
+                app:icon="@drawable/ic_remote_power"
+                app:iconGravity="textStart"
+                app:iconTint="@android:color/white" />
+
+            <GridLayout
+                android:id="@+id/dpadGrid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="26dp"
+                android:columnCount="3"
+                android:rowCount="3">
+
+                <Space android:layout_width="62dp" android:layout_height="62dp" />
+                <com.google.android.material.button.MaterialButton android:id="@+id/upButton" style="@style/Widget.LCB.RemoteButton" android:layout_margin="3dp" android:text="▲" />
+                <Space android:layout_width="62dp" android:layout_height="62dp" />
+                <com.google.android.material.button.MaterialButton android:id="@+id/leftButton" style="@style/Widget.LCB.RemoteButton" android:layout_margin="3dp" android:text="◀" />
+                <com.google.android.material.button.MaterialButton android:id="@+id/okButton" style="@style/Widget.LCB.RemoteButton.Primary" android:layout_margin="3dp" android:text="OK" />
+                <com.google.android.material.button.MaterialButton android:id="@+id/rightButton" style="@style/Widget.LCB.RemoteButton" android:layout_margin="3dp" android:text="▶" />
+                <Space android:layout_width="62dp" android:layout_height="62dp" />
+                <com.google.android.material.button.MaterialButton android:id="@+id/downButton" style="@style/Widget.LCB.RemoteButton" android:layout_margin="3dp" android:text="▼" />
+                <Space android:layout_width="62dp" android:layout_height="62dp" />
+            </GridLayout>
+
+            <LinearLayout
+                android:id="@+id/volumeChannelRow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="26dp"
+                android:layout_marginEnd="16dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <include
+                    android:id="@+id/volumeControl"
+                    layout="@layout/view_remote_vertical_control"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="1" />
+
+                <include
+                    android:id="@+id/channelControl"
+                    layout="@layout/view_remote_vertical_control"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <GridLayout
+                android:id="@+id/utilityGrid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:columnCount="3">
+
+                <com.google.android.material.button.MaterialButton android:id="@+id/muteButton" style="@style/Widget.LCB.UtilityButton" android:text="静音" />
+                <com.google.android.material.button.MaterialButton android:id="@+id/sourceButton" style="@style/Widget.LCB.UtilityButton" android:text="信号源" />
+                <com.google.android.material.button.MaterialButton android:id="@+id/homeButton" style="@style/Widget.LCB.UtilityButton" android:text="主页" />
+                <com.google.android.material.button.MaterialButton android:id="@+id/backRemoteButton" style="@style/Widget.LCB.UtilityButton" android:text="返回" />
+                <com.google.android.material.button.MaterialButton android:id="@+id/menuButton" style="@style/Widget.LCB.UtilityButton" android:text="菜单" />
+                <com.google.android.material.button.MaterialButton android:id="@+id/settingsButton" style="@style/Widget.LCB.UtilityButton" android:text="设置" />
+            </GridLayout>
+        </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
