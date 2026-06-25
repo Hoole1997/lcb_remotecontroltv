@@ -9,12 +9,22 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
 import androidx.fragment.app.Fragment
 import com.example.lcb.app.databinding.FragmentSettingsBinding
 
 class SettingsFragment : Fragment() {
     private var _binding: FragmentSettingsBinding? = null
     private val binding get() = _binding!!
+
+    private data class Language(val tag: String, val label: String)
+
+    private val languages = listOf(
+        Language("", "跟随系统"),
+        Language("zh-CN", "简体中文"),
+        Language("en", "English"),
+    )
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,10 +39,11 @@ class SettingsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.versionText.text = "版本 ${appVersionName()}"
+        updateLanguageValue()
 
         binding.rowFeedback.setOnClickListener { sendFeedback() }
-        binding.rowRate.setOnClickListener { openStoreListing() }
-        binding.rowAbout.setOnClickListener { showAbout() }
+        binding.rowLanguage.setOnClickListener { showLanguageDialog() }
+        binding.rowPrivacy.setOnClickListener { openPrivacyPolicy() }
     }
 
     private fun appVersionName(): String {
@@ -57,27 +68,48 @@ class SettingsFragment : Fragment() {
         }
     }
 
-    private fun openStoreListing() {
-        val context = requireContext()
-        val marketUri = Uri.parse("market://details?id=${context.packageName}")
-        try {
-            startActivity(Intent(Intent.ACTION_VIEW, marketUri))
-        } catch (e: ActivityNotFoundException) {
-            val webUri = Uri.parse("https://play.google.com/store/apps/details?id=${context.packageName}")
-            try {
-                startActivity(Intent(Intent.ACTION_VIEW, webUri))
-            } catch (e2: ActivityNotFoundException) {
-                Toast.makeText(context, "未找到应用商店", Toast.LENGTH_SHORT).show()
-            }
-        }
+    private fun currentLanguage(): Language {
+        val locales = AppCompatDelegate.getApplicationLocales()
+        if (locales.isEmpty) return languages.first()
+        val current = locales[0]?.language ?: return languages.first()
+        return languages.firstOrNull { it.tag.startsWith(current) && it.tag.isNotEmpty() }
+            ?: languages.first()
     }
 
-    private fun showAbout() {
+    private fun updateLanguageValue() {
+        binding.languageValue.text = currentLanguage().label
+    }
+
+    private fun showLanguageDialog() {
+        val labels = languages.map { it.label }.toTypedArray()
+        val checked = languages.indexOf(currentLanguage()).coerceAtLeast(0)
         AlertDialog.Builder(requireContext())
-            .setTitle(getString(R.string.app_name))
-            .setMessage("版本 ${appVersionName()}\n\n一款简洁的红外万能电视遥控器，无需联网即可控制你的电视。")
-            .setPositiveButton("确定", null)
+            .setTitle("选择语言")
+            .setSingleChoiceItems(labels, checked) { dialog, which ->
+                applyLanguage(languages[which])
+                dialog.dismiss()
+            }
+            .setNegativeButton("取消", null)
             .show()
+    }
+
+    private fun applyLanguage(language: Language) {
+        val locales = if (language.tag.isEmpty()) {
+            LocaleListCompat.getEmptyLocaleList()
+        } else {
+            LocaleListCompat.forLanguageTags(language.tag)
+        }
+        AppCompatDelegate.setApplicationLocales(locales)
+        updateLanguageValue()
+    }
+
+    private fun openPrivacyPolicy() {
+        val uri = Uri.parse("https://sites.google.com/view/lcb-tv-remote/privacy-policy")
+        try {
+            startActivity(Intent(Intent.ACTION_VIEW, uri))
+        } catch (e: ActivityNotFoundException) {
+            Toast.makeText(requireContext(), "未找到可用的浏览器", Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun onDestroyView() {

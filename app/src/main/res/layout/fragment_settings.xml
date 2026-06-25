@@ -55,20 +55,11 @@
                 android:paddingTop="18dp"
                 android:paddingBottom="18dp">
 
-                <FrameLayout
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:background="@drawable/bg_icon_tile"
-                    android:backgroundTint="@color/remote_soft_teal">
-
-                    <ImageView
-                        android:layout_width="22dp"
-                        android:layout_height="22dp"
-                        android:layout_gravity="center"
-                        android:contentDescription="@null"
-                        android:src="@drawable/ic_remote_handset"
-                        app:tint="@color/remote_primary" />
-                </FrameLayout>
+                <ImageView
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_logo_round" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -131,16 +122,25 @@
             <View style="@style/Widget.LCB.SettingsRow.Divider" />
 
             <LinearLayout
-                android:id="@+id/rowRate"
+                android:id="@+id/rowLanguage"
                 style="@style/Widget.LCB.SettingsRow">
 
                 <ImageView
                     style="@style/Widget.LCB.SettingsRow.Icon"
-                    android:src="@drawable/ic_remote_check" />
+                    android:src="@drawable/ic_remote_language" />
 
                 <TextView
                     style="@style/Widget.LCB.SettingsRow.Title"
-                    android:text="给个好评" />
+                    android:text="语言" />
+
+                <TextView
+                    android:id="@+id/languageValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="6dp"
+                    android:textColor="@color/remote_text_secondary"
+                    android:textSize="14sp"
+                    tools:text="跟随系统" />
 
                 <ImageView style="@style/Widget.LCB.SettingsRow.Chevron" />
             </LinearLayout>
@@ -148,16 +148,16 @@
             <View style="@style/Widget.LCB.SettingsRow.Divider" />
 
             <LinearLayout
-                android:id="@+id/rowAbout"
+                android:id="@+id/rowPrivacy"
                 style="@style/Widget.LCB.SettingsRow">
 
                 <ImageView
                     style="@style/Widget.LCB.SettingsRow.Icon"
-                    android:src="@drawable/ic_remote_info" />
+                    android:src="@drawable/ic_remote_privacy" />
 
                 <TextView
                     style="@style/Widget.LCB.SettingsRow.Title"
-                    android:text="关于" />
+                    android:text="隐私协议" />
 
                 <ImageView style="@style/Widget.LCB.SettingsRow.Chevron" />
             </LinearLayout>
