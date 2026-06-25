@@ -13,9 +13,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:menu="@menu/menu_remote_control"
         app:navigationIcon="@drawable/ic_remote_back"
         app:navigationIconTint="@color/remote_on_surface"
+        app:subtitleTextAppearance="@style/TextAppearance.Material3.BodySmall"
         app:subtitleTextColor="@color/remote_text_secondary"
+        app:titleTextAppearance="@style/TextAppearance.Material3.TitleMedium"
         app:titleTextColor="@color/remote_on_surface" />
 
     <View

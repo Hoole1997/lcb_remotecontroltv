@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.lcb.app.databinding.ActivityRemoteControlBinding
 import com.example.lcb.app.databinding.ViewRemoteVerticalControlBinding
@@ -55,6 +56,27 @@ class RemoteControlActivity : AppCompatActivity() {
         binding.toolbar.title = savedTv.displayName
         binding.toolbar.subtitle = savedTv.modelName
         binding.toolbar.setNavigationOnClickListener { finish() }
+        binding.toolbar.setOnMenuItemClickListener { item ->
+            if (item.itemId == R.id.action_delete_device) {
+                confirmDelete(savedTv)
+                true
+            } else {
+                false
+            }
+        }
+    }
+
+    private fun confirmDelete(savedTv: SavedTv) {
+        AlertDialog.Builder(this)
+            .setTitle("删除设备")
+            .setMessage("确定要删除「${savedTv.displayName}」吗？")
+            .setNegativeButton("取消", null)
+            .setPositiveButton("删除") { _, _ ->
+                SharedPreferencesSavedTvRepository(this).delete(savedTv.id)
+                Toast.makeText(this, "已删除", Toast.LENGTH_SHORT).show()
+                finish()
+            }
+            .show()
     }
 
     private fun bindButtons() {
