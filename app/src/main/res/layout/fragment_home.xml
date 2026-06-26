@@ -50,7 +50,7 @@
             android:layout_width="260dp"
             android:layout_height="220dp"
             android:contentDescription="@null"
-            android:src="@drawable/illustration_empty_tv"
+            android:src="@mipmap/bg_empty"
             app:layout_constraintBottom_toTopOf="@id/emptyTitle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

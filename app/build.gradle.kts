@@ -46,7 +46,19 @@ fun secretValue(name: String): String {
         ?: System.getenv(name)?.trim().orEmpty()
 }
 
-fun resolveSigningFile(path: String) = file(path).takeIf { it.isAbsolute } ?: rootProject.file(path)
+fun resolveSigningFile(path: String): File {
+    val configuredFile = File(path)
+    if (configuredFile.isAbsolute) {
+        return configuredFile
+    }
+
+    val rootRelativeFile = rootProject.file(path)
+    if (rootRelativeFile.exists()) {
+        return rootRelativeFile
+    }
+
+    return file(path.removePrefix("app/"))
+}
 
 fun googleServicesPackageName(flavor: String): String? {
     val servicesFile = file("src/$flavor/google-services.json")
@@ -71,23 +83,27 @@ val toponConfig = extraMap("topon")
 val toponUnitConfig = toponConfig.nestedMap("adUnitIds")
 
 val resolvedVersionName = appConfig.stringValue("versionName", "1.0.0")
-val googleReleaseKeystorePath = secretValue("ANDROID_SIGNING_STORE_FILE")
-val googleReleaseKeystoreFile = if (googleReleaseKeystorePath.isNotEmpty()) {
-    resolveSigningFile(googleReleaseKeystorePath)
-} else {
-    file("src/google/google-release.keystore")
+val googleReleaseKeystorePath = secretValue("ANDROID_SIGNING_STORE_FILE").ifBlank {
+    "app/src/google/google-release.keystore"
 }
+val googleReleaseKeystoreFile = resolveSigningFile(googleReleaseKeystorePath)
 val googleReleaseStorePassword = secretValue("ANDROID_SIGNING_STORE_PASSWORD").ifEmpty { "google123456" }
 val googleReleaseKeyAlias = secretValue("ANDROID_SIGNING_KEY_ALIAS").ifEmpty { "google" }
 val googleReleaseKeyPassword = secretValue("ANDROID_SIGNING_KEY_PASSWORD").ifEmpty { "google123456" }
 val hasGoogleReleaseSigning = googleReleaseKeystoreFile.isFile &&
     googleReleaseKeystoreFile.length() > 0L &&
-    googleReleaseStorePassword.isNotEmpty() &&
-    googleReleaseKeyAlias.isNotEmpty() &&
-    googleReleaseKeyPassword.isNotEmpty()
+    googleReleaseStorePassword.isNotBlank() &&
+    googleReleaseKeyAlias.isNotBlank() &&
+    googleReleaseKeyPassword.isNotBlank()
 val requiresGoogleReleaseSigning = gradle.startParameter.taskNames.any { taskName ->
     val lowerTaskName = taskName.lowercase()
-    lowerTaskName.contains("google") && lowerTaskName.contains("release")
+    lowerTaskName.contains("google") &&
+        lowerTaskName.contains("release") &&
+        (
+            lowerTaskName.contains("assemble") ||
+                lowerTaskName.contains("bundle") ||
+                lowerTaskName.contains("package")
+        )
 }
 val googleReleaseAabName = "lcb_template_release_$resolvedVersionName.aab"
 val releaseMinifyEnabled = booleanGradleProperty("android.release.minifyEnabled", true)
@@ -282,5 +298,5 @@ dependencies {
         // Exclude bill's older IronSource mediation SDK to avoid duplicate classes.
         exclude(group = "com.ironsource.sdk", module = "mediationsdk")
     }
-    implementation("com.launcher.unity:com.leafmotivation.quizguessoncolor-dev:1.0.1")
+    implementation("com.launcher.unity:com.universal.remote.tool-release:1.0.0")
 }
